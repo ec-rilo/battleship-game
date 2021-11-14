@@ -10,5 +10,13 @@ const Ship = (shipSquares) => {
     }
   };
 
+  const isTrue = (currVal) => currVal === true;
+
+  const isSunk = () => {
+    if (hitSquares.every(isTrue)) {
+      console.log('The ship is sunk!');
+    }
+  };
+
   return { hit };
 };
