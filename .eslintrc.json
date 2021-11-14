@@ -13,5 +13,6 @@
     },
     "rules": {
         "no-plusplus": [2, { "allowForLoopAfterthoughts": true }]
-    }
+    },
+    "import/no-duplicates": ["error", {"considerQueryString": true}]
 }
