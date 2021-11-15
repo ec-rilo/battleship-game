@@ -1,28 +1,164 @@
-// import Ship from '../modules/ship-creation';
+import Ship from './ship-logic';
 const array = [
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
-  [false, false, false, false, false, false, false, false, false, false, false],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
+  [
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+    { populated: false, hit: false },
+  ],
 ];
 
-// const coordinates = ['1G, 1H, 1I, 1J'];
+const array2 = array.map((arr) => {
+  return arr.slice();
+});
+array2[0][0] = { populated: true, hit: false };
+array2[0][1] = { populated: true, hit: false };
 
-const Gameboard = () => {
+const popGameboard = () => {
   const board = [];
 
   const popBoard = () => {
     for (let i = 0; i < 11; ++i) {
       board.push([]);
       for (let j = 0; j < 11; ++j) {
-        board[i][j] = false;
+        board[i][j] = { populated: false, hit: false };
       }
     }
     return board;
@@ -31,6 +167,41 @@ const Gameboard = () => {
   return { popBoard };
 };
 
-const player1 = Gameboard();
+const Gameboard = () => {
+  let board = [];
+  for (let i = 0; i < 11; ++i) {
+    board.push([]);
+    for (let j = 0; j < 11; ++j) {
+      board[i][j] = { populated: false, hit: false };
+    }
+  }
 
-export { player1, array };
+  let shipsArr = [];
+
+  const placeShip = () => {
+    const shipCoords = [
+      { x: 0, y: 0 },
+      { x: 0, y: 1 },
+    ];
+    let available = false;
+    for (let i = 0; i < shipCoords.length; ++i) {
+      if (board[shipCoords[i].x][shipCoords[i].y].populated === false) {
+        available = true;
+      }
+    }
+    if (available === true) {
+      for (let i = 0; i < shipCoords.length; ++i) {
+        board[shipCoords[i].x][shipCoords[i].y].populated = true;
+      }
+      shipsArr.push(Ship(shipCoords));
+      return board;
+    }
+  };
+
+  return { placeShip };
+};
+
+const player1 = popGameboard();
+const test1 = Gameboard();
+
+export { player1, array, array2, test1 };
