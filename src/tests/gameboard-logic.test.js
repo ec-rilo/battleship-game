@@ -1,4 +1,4 @@
-import { player1, test1, array, array2 } from './gameboard-logic';
+import { player1, test1, array2 } from './gameboard-logic';
 import { gameboard1, defaultBoardArr } from './board-population';
 
 test('returns 11 rows and 11 columns in the 2d array initialized as false', () => {
