@@ -227,12 +227,14 @@ const Gameboard = () => {
     return board[attackCoords.x][attackCoords.y];
   };
 
+  const isSunk = (ship) => ship.isSunk() === true;
+
   const reportShips = () => {
-    // Check if all the ships are sunk.
-    //
+    if (shipsArr.every(isSunk) === true) return true;
+    return false;
   };
 
-  return { placeShip, receiveAttack };
+  return { placeShip, receiveAttack, reportShips };
 };
 
 const player1 = popGameboard();
