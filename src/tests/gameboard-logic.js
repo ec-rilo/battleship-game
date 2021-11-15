@@ -5,22 +5,6 @@ const array2 = defaultBoardArr.map((arr) => [...arr]);
 array2[0][0] = { populated: true, hit: false };
 array2[0][1] = { populated: true, hit: false };
 
-const popGameboard = () => {
-  const board = [];
-
-  const popBoard = () => {
-    for (let i = 0; i < 11; ++i) {
-      board.push([]);
-      for (let j = 0; j < 11; ++j) {
-        board[i][j] = { populated: false, hit: false };
-      }
-    }
-    return board;
-  };
-
-  return { popBoard };
-};
-
 const Gameboard = () => {
   const board = [];
   for (let i = 0; i < 11; ++i) {
@@ -92,7 +76,6 @@ const Gameboard = () => {
   return { placeShip, receiveAttack, reportShips };
 };
 
-const player1 = popGameboard();
 const test1 = Gameboard();
 
-export { player1, array2, test1 };
+export { array2, test1 };
