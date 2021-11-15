@@ -173,7 +173,6 @@ const Gameboard = () => {
       board[i][j] = { populated: false, hit: false };
     }
   }
-
   let shipsArr = [];
 
   const placeShip = () => {
@@ -197,7 +196,25 @@ const Gameboard = () => {
     return "Can't place a ship here";
   };
 
-  return { placeShip };
+  const receiveAttack = () => {
+    const attackCoords = {
+      x: 0,
+      y: 0,
+    };
+
+    if (
+      board[attackCoords.x][attackCoords.y].populated === true &&
+      board[attackCoords.x][attackCoords.y].hit === false
+    ) {
+      // Call the ship function and make it hit().
+      board[attackCoords.x][attackCoords.y].hit = true;
+    } else {
+      board[attackCoords.x][attackCoords.y].hit = true;
+    }
+    return board[attackCoords.x][attackCoords.y];
+  };
+
+  return { placeShip, receiveAttack };
 };
 
 const player1 = popGameboard();
