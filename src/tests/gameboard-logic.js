@@ -194,6 +194,7 @@ const Gameboard = () => {
       shipsArr.push(Ship(shipCoords));
       return board;
     }
+    return "Can't place a ship here";
   };
 
   return { placeShip };
