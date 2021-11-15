@@ -145,9 +145,7 @@ const array = [
   ],
 ];
 
-// const coordinates = ['1G, 1H, 1I, 1J'];
-
-const Gameboard = () => {
+const popGameboard = () => {
   const board = [];
 
   const popBoard = () => {
@@ -163,6 +161,6 @@ const Gameboard = () => {
   return { popBoard };
 };
 
-const player1 = Gameboard();
+const player1 = popGameboard();
 
 export { player1, array };
