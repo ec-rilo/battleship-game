@@ -12,7 +12,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-plusplus": [2, { "allowForLoopAfterthoughts": true }]
-    },
-    "import/no-duplicates": ["error", {"considerQueryString": true}]
+        "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
+        "object-curly-newline": "off"
+    }
 }
