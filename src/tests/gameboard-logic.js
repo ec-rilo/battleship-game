@@ -1,4 +1,5 @@
 import Ship from './ship-logic';
+
 const array = [
   [
     { populated: false, hit: false },
