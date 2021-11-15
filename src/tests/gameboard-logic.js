@@ -145,9 +145,7 @@ const array = [
   ],
 ];
 
-const array2 = array.map((arr) => {
-  return arr.slice();
-});
+const array2 = array.map((arr) => [...arr]);
 array2[0][0] = { populated: true, hit: false };
 array2[0][1] = { populated: true, hit: false };
 
@@ -175,7 +173,6 @@ const Gameboard = () => {
       board[i][j] = { populated: false, hit: false };
     }
   }
-
   let shipsArr = [];
 
   const placeShip = () => {
@@ -196,9 +193,28 @@ const Gameboard = () => {
       shipsArr.push(Ship(shipCoords));
       return board;
     }
+    return "Can't place a ship here";
   };
 
-  return { placeShip };
+  const receiveAttack = () => {
+    const attackCoords = {
+      x: 0,
+      y: 0,
+    };
+
+    if (
+      board[attackCoords.x][attackCoords.y].populated === true &&
+      board[attackCoords.x][attackCoords.y].hit === false
+    ) {
+      // Call the ship function and make it hit().
+      board[attackCoords.x][attackCoords.y].hit = true;
+    } else {
+      board[attackCoords.x][attackCoords.y].hit = true;
+    }
+    return board[attackCoords.x][attackCoords.y];
+  };
+
+  return { placeShip, receiveAttack };
 };
 
 const player1 = popGameboard();

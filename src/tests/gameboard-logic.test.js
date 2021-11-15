@@ -7,3 +7,7 @@ test('popBoard returns a populated array with false values', () => {
 test('Place ship on gameboard that has false values', () => {
   expect(test1.placeShip()).toEqual(array2);
 });
+
+test('Populate gameboard with hit on recieveAttack()', () => {
+  expect(test1.receiveAttack()).toEqual({ populated: true, hit: true });
+});
