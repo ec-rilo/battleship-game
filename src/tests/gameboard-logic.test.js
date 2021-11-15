@@ -1,7 +1,8 @@
 import { player1, test1, array, array2 } from './gameboard-logic';
+import { gameboard1, defaultBoardArr } from './board-population';
 
-test('popBoard returns a populated array with false values', () => {
-  expect(player1.popBoard()).toEqual(array);
+test('returns 11 rows and 11 columns in the 2d array initialized as false', () => {
+  expect(gameboard1.popBoard()).toEqual(defaultBoardArr);
 });
 
 test('Place ship on gameboard that has false values', () => {
