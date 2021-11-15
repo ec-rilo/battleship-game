@@ -1,4 +1,17 @@
 // import Ship from '../modules/ship-creation';
+const array = [
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false],
+];
 
 // const coordinates = ['1G, 1H, 1I, 1J'];
 
@@ -20,4 +33,4 @@ const Gameboard = () => {
 
 const player1 = Gameboard();
 
-export default player1;
+export { player1, array };
