@@ -174,7 +174,19 @@ const Gameboard = () => {
       board[i][j] = { populated: false, hit: false };
     }
   }
-  const shipsArr = [];
+  const shipsArr = [
+    Ship({ x: 0, y: 0 }, { x: 0, y: 1 }),
+    Ship({ x: 0, y: 3 }, { x: 0, y: 4 }, { x: 0, y: 5 }),
+    Ship({ x: 0, y: 7 }, { x: 0, y: 8 }, { x: 0, y: 9 }),
+    Ship({ x: 3, y: 1 }, { x: 3, y: 2 }, { x: 3, y: 3 }, { x: 3, y: 4 }),
+    Ship(
+      { x: 7, y: 1 },
+      { x: 7, y: 2 },
+      { x: 7, y: 3 },
+      { x: 7, y: 4 },
+      { x: 7, y: 5 }
+    ),
+  ];
 
   const placeShip = () => {
     const shipCoords = [
@@ -213,6 +225,11 @@ const Gameboard = () => {
       board[attackCoords.x][attackCoords.y].hit = true;
     }
     return board[attackCoords.x][attackCoords.y];
+  };
+
+  const reportShips = () => {
+    // Check if all the ships are sunk.
+    //
   };
 
   return { placeShip, receiveAttack };
