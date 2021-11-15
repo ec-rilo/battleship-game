@@ -145,9 +145,7 @@ const array = [
   ],
 ];
 
-const array2 = array.map((arr) => {
-  return arr.slice();
-});
+const array2 = array.map((arr) => [...arr]);
 array2[0][0] = { populated: true, hit: false };
 array2[0][1] = { populated: true, hit: false };
 
