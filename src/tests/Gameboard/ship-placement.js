@@ -5,7 +5,7 @@ const populatedArr1 = defaultBoardArr.map((arr) => [...arr]);
 populatedArr1[0][0] = { populated: true, hit: false };
 populatedArr1[0][1] = { populated: true, hit: false };
 
-const Gameboard2 = () => {
+const Gameboard = () => {
   const board = [];
 
   for (let i = 0; i < 11; ++i) {
@@ -48,6 +48,6 @@ const Gameboard2 = () => {
   return { placeShip };
 };
 
-const gameboard2 = Gameboard2();
+const gameboard2 = Gameboard();
 
 export { gameboard2, populatedArr1 };
