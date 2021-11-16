@@ -19,7 +19,7 @@ const Ship = (shipSquares) => {
     return false;
   };
 
-  return { hit };
+  return { hit, isSunk };
 };
 
 export default Ship;
