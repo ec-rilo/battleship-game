@@ -2,8 +2,8 @@ import Ship from '../Ship/ship-logic';
 import { defaultBoardArr } from './board-population';
 
 const populatedArr1 = defaultBoardArr.map((arr) => [...arr]);
-populatedArr1[0][0] = { populated: true, hit: false };
-populatedArr1[0][1] = { populated: true, hit: false };
+populatedArr1[0][0] = { populated: true, hit: false, ship: 0 };
+populatedArr1[0][1] = { populated: true, hit: false, ship: 0 };
 
 const Gameboard = () => {
   const board = [];
@@ -36,10 +36,11 @@ const Gameboard = () => {
     }
 
     if (available === true) {
+      shipsArr.push(Ship(shipCoords));
       for (let i = 0; i < shipCoords.length; ++i) {
         board[shipCoords[i].x][shipCoords[i].y].populated = true;
+        board[shipCoords[i].x][shipCoords[i].y].ship = shipsArr.length - 1;
       }
-      shipsArr.push(Ship(shipCoords));
       return board;
     }
     return "Can't place a ship here";
