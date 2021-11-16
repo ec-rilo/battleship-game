@@ -12,7 +12,11 @@ test('Check that the gameboard can populate a ship at 0,0 and 0,1', () => {
 });
 
 test('Populate gameboard with hit on receiveAttack()', () => {
-  expect(gameboard3.receiveAttack()).toEqual({ populated: true, hit: true });
+  expect(gameboard3.receiveAttack()).toEqual({
+    populated: true,
+    hit: true,
+    ship: 0,
+  });
 });
 
 // It should be marked as sunk because I added extra code marking the remaining
