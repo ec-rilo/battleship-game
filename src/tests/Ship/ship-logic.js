@@ -4,9 +4,14 @@ const Ship = (shipSquares) => {
     hitSquares.push(false);
   }
 
-  const hit = (num) => {
-    if (shipSquares.indexOf(num) !== -1) {
-      hitSquares[shipSquares.indexOf(num)] = true;
+  const hit = (attackCoords) => {
+    for (let i = 0; i < shipSquares.length; ++i) {
+      if (
+        shipSquares[i].x === attackCoords.x &&
+        shipSquares[i].y === attackCoords.y
+      ) {
+        hitSquares[i] = true;
+      }
     }
   };
 
