@@ -1,4 +1,3 @@
-import { test1 } from './gameboard-logic';
 import { gameboard1, defaultBoardArr } from './board-population';
 import { gameboard2, populatedArr1 } from './ship-placement';
 import gameboard3 from './receive-attack';
