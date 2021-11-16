@@ -35,6 +35,7 @@ const Gameboard = () => {
       board[attackCoords.x][attackCoords.y].hit === false
     ) {
       board[attackCoords.x][attackCoords.y].hit = true;
+      shipsArr[board[attackCoords.x][attackCoords.y].ship].hit(attackCoords);
     }
   };
 
