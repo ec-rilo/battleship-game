@@ -21,10 +21,11 @@ const Gameboard = () => {
     }
 
     if (available === true) {
+      shipsArr.push(Ship(shipCoords));
       for (let i = 0; i < shipCoords.length; ++i) {
         board[shipCoords[i].x][shipCoords[i].y].populated = true;
+        board[shipCoords[i].x][shipCoords[i].y].ship = shipsArr.length - 1;
       }
-      shipsArr.push(Ship(shipCoords));
     }
   };
 
