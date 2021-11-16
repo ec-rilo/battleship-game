@@ -26,8 +26,6 @@ const Gameboard = () => {
     ) {
       // Call the ship function and make it hit().
       board[attackCoords.x][attackCoords.y].hit = true;
-    } else {
-      board[attackCoords.x][attackCoords.y].hit = true;
     }
     return board[attackCoords.x][attackCoords.y];
   };
