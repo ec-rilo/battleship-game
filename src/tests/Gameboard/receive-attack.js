@@ -35,31 +35,17 @@ const Gameboard = () => {
     }
   }
 
-  // Set as true to test when a ship actually populates it.
-  board[0][0].populated = true;
-  board[0][0].ship = 0;
-
-  const receiveAttack = () => {
-    /*
-     * The attack coords will be an argument when receiveAttack is called.
-     * These are placeholder.
-     */
-    const attackCoords = {
-      x: 0,
-      y: 0,
-    };
-
+  const receiveAttack = (attackCoord) => {
     if (
-      board[attackCoords.x][attackCoords.y].populated === true &&
-      board[attackCoords.x][attackCoords.y].hit === false
+      board[attackCoord.x][attackCoord.y].populated === true &&
+      board[attackCoord.x][attackCoord.y].hit === false
     ) {
-      // Call the ship function and make it hit().
-      board[attackCoords.x][attackCoords.y].hit = true;
+      board[attackCoord.x][attackCoord.y].hit = true;
     }
-    return board[attackCoords.x][attackCoords.y];
+    return board[attackCoord.x][attackCoord.y]; // Remove this on the final product
   };
 
-  return { receiveAttack };
+  return { receiveAttack, board };
 };
 
 const Gameboard2 = () => {
@@ -104,6 +90,10 @@ const Gameboard2 = () => {
 };
 
 const gameboard3 = Gameboard();
+// Set as true to test when a ship actually populates the board.
+gameboard3.board[0][0].populated = true;
+gameboard3.board[0][0].ship = 0;
+
 const gameboard6 = Gameboard2();
 
 export { gameboard3, gameboard6 };
