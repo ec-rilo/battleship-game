@@ -29,13 +29,18 @@ const Gameboard = () => {
     }
   };
 
-  const receiveAttack = (attackCoords) => {
+  const receiveAttack = (attackCoord) => {
     if (
-      board[attackCoords.x][attackCoords.y].populated === true &&
-      board[attackCoords.x][attackCoords.y].hit === false
+      board[attackCoord.x][attackCoord.y].populated === true &&
+      board[attackCoord.x][attackCoord.y].hit === false
     ) {
-      board[attackCoords.x][attackCoords.y].hit = true;
-      shipsArr[board[attackCoords.x][attackCoords.y].ship].hit(attackCoords);
+      board[attackCoord.x][attackCoord.y].hit = true;
+      shipsArr[board[attackCoord.x][attackCoord.y].ship].hit(attackCoord);
+    } else if (
+      board[attackCoord.x][attackCoord.y].populated === false &&
+      board[attackCoord.x][attackCoord.y].hit === false
+    ) {
+      board[attackCoord.x][attackCoord.y].hit = true;
     }
   };
 
@@ -46,7 +51,7 @@ const Gameboard = () => {
     return false;
   };
 
-  return { placeShip, receiveAttack, allSunk };
+  return { placeShip, receiveAttack, allSunk, board };
 };
 
 export default Gameboard;
