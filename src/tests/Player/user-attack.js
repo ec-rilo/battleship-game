@@ -50,12 +50,12 @@ const Player = () => {
   return { attack, damage, gameboard };
 };
 
-const player1 = Player();
-initShips1(player1);
+const userAttackPlayer1 = Player();
+initShips1(userAttackPlayer1);
 
-const player2 = Player();
-initShips2(player2);
+const userAttackPlayer2 = Player();
+initShips2(userAttackPlayer2);
 
-attackAllShips(player1, player2);
+attackAllShips(userAttackPlayer1, userAttackPlayer2);
 
-export default player2;
+export default userAttackPlayer2;
