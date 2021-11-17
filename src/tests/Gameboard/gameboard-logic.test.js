@@ -1,6 +1,6 @@
 import { gameboard1, defaultBoardArr } from './board-population';
 import { gameboard2, populatedArr1 } from './ship-placement';
-import { gameboard3, gameboard6 } from './receive-attack';
+import { receiveAttackGB1, gameboard6 } from './receive-attack';
 import { gameboard4, gameboard5 } from './ship-sunk-check';
 
 test('returns 11 rows and 11 columns in the 2d array initialized as false', () => {
@@ -12,7 +12,7 @@ test('Check that the gameboard can populate a ship at 0,0 and 0,1', () => {
 });
 
 test('Populate gameboard with hit on receiveAttack()', () => {
-  expect(gameboard3.board[0][0]).toEqual({
+  expect(receiveAttackGB1.board[0][0]).toEqual({
     populated: true,
     hit: true,
     ship: 0,
@@ -26,6 +26,8 @@ test('ship should be marked true that it is sunk when hit() is called.', () => {
     gameboard6.shipsArr[gameboard6.board[0][0].ship].isSunk()
   ).toBeTruthy();
 });
+
+// Test when board is not populated and board is not hit for receiveAttack() function.
 
 test('Reports true when all ships are sunk', () => {
   expect(gameboard4.allSunk()).toBeTruthy();
