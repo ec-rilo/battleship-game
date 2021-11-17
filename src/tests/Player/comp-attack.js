@@ -72,4 +72,28 @@ const compAttackEnemy1 = CompPlayer();
 initShips2(compAttackEnemy1);
 compAttackEnemy1.attack(compAttackPlayer1, 4, 1);
 
-export { compAttackPlayer1, compAttackPlayer1Arr };
+/* Computer can attack a random location */
+const compAttackPlayer2 = Player();
+initShips1(compAttackPlayer2);
+
+const compAttackEnemy2 = CompPlayer();
+initShips2(compAttackEnemy2);
+const randXVal = getRandomInt(11);
+const randYVal = getRandomInt(11);
+compAttackEnemy2.attack(compAttackPlayer2, randXVal, randYVal);
+
+const compAttackPlayer2Arr = defaultBoardArr.map((arr) => [...arr]);
+compAttackPlayer2Arr[0][3] = { populated: true, hit: false, ship: 0 };
+compAttackPlayer2Arr[0][4] = { populated: true, hit: false, ship: 0 };
+compAttackPlayer2Arr[0][5] = { populated: true, hit: false, ship: 0 };
+compAttackPlayer2Arr[randXVal][randYVal] = {
+  populated: false,
+  hit: true,
+  ship: undefined,
+};
+export {
+  compAttackPlayer1,
+  compAttackPlayer1Arr,
+  compAttackPlayer2,
+  compAttackPlayer2Arr,
+};
