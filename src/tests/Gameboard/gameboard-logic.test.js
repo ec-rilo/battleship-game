@@ -23,8 +23,8 @@ test('Populate gameboard with hit on receiveAttack()', () => {
   });
 });
 
-// It should be marked as sunk because I added extra code marking the remaining
-// ship squares to be hit when this is called.
+// Expected ship should be marked as sunk.
+// I marked the remaining shipSquares as hit when receiveAttack() is called.
 test('ship should be marked true that it is sunk when hit() is called.', () => {
   expect(gameboard6.receiveAttack()).toBeTruthy();
 });
