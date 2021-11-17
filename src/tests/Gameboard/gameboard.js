@@ -1,4 +1,4 @@
-import Ship from './ship';
+import Ship from '../Ship/ship-logic';
 
 const Gameboard = () => {
   const board = [];
