@@ -11,8 +11,12 @@ test('Check that the gameboard can populate a ship at 0,0 and 0,1', () => {
   expect(gameboard2.placeShip()).toEqual(populatedArr1);
 });
 
+const attackCoordGB3 = {
+  x: 0,
+  y: 0,
+};
 test('Populate gameboard with hit on receiveAttack()', () => {
-  expect(gameboard3.receiveAttack()).toEqual({
+  expect(gameboard3.receiveAttack(attackCoordGB3)).toEqual({
     populated: true,
     hit: true,
     ship: 0,
