@@ -39,8 +39,6 @@ test('Gameboard can be marked as hit when populated and hit are false.', () => {
   });
 });
 
-// Test when board is not populated and board is not hit for receiveAttack() function.
-
 test('Reports true when all ships are sunk', () => {
   expect(gameboard4.allSunk()).toBeTruthy();
 });
