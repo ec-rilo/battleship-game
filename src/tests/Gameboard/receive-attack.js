@@ -35,75 +35,45 @@ const Gameboard = () => {
     }
   }
 
-  // Set as true to test when a ship actually populates it.
-  board[0][0].populated = true;
-  board[0][0].ship = 0;
-
-  const receiveAttack = () => {
-    /*
-     * The attack coords will be an argument when receiveAttack is called.
-     * These are placeholder.
-     */
-    const attackCoords = {
-      x: 0,
-      y: 0,
-    };
-
-    if (
-      board[attackCoords.x][attackCoords.y].populated === true &&
-      board[attackCoords.x][attackCoords.y].hit === false
-    ) {
-      // Call the ship function and make it hit().
-      board[attackCoords.x][attackCoords.y].hit = true;
-    }
-    return board[attackCoords.x][attackCoords.y];
-  };
-
-  return { receiveAttack };
-};
-
-const Gameboard2 = () => {
-  const board = [];
-  for (let i = 0; i < 11; ++i) {
-    board.push([]);
-    for (let j = 0; j < 11; ++j) {
-      board[i][j] = { populated: false, hit: false, ship: undefined };
-    }
-  }
-  initBoardArr(board);
-
-  // Giving shipsArr test values
   const shipsArr = [];
-  initShipsArr(shipsArr);
 
-  const receiveAttack = () => {
-    /*
-     * The attack coords will be an argument when receiveAttack is called.
-     * These are placeholder.
-     */
-    const attackCoords = {
-      x: 0,
-      y: 0,
-    };
-
+  const receiveAttack = (attackCoord) => {
     if (
-      board[attackCoords.x][attackCoords.y].populated === true &&
-      board[attackCoords.x][attackCoords.y].hit === false
+      board[attackCoord.x][attackCoord.y].populated === true &&
+      board[attackCoord.x][attackCoord.y].hit === false
     ) {
-      // Call the ship function and make it hit().
-      // Get the ship and call a hit on it.
-      board[attackCoords.x][attackCoords.y].hit = true;
-      shipsArr[board[attackCoords.x][attackCoords.y].ship].hit(attackCoords);
-      // Added this to sink the ship. Delete this in the final factory function.
-      shipsArr[board[attackCoords.x][attackCoords.y].ship].hit({ x: 0, y: 1 });
+      board[attackCoord.x][attackCoord.y].hit = true;
+      shipsArr[board[attackCoord.x][attackCoord.y].ship].hit(attackCoord);
+    } else if (
+      board[attackCoord.x][attackCoord.y].populated === false &&
+      board[attackCoord.x][attackCoord.y].hit === false
+    ) {
+      board[attackCoord.x][attackCoord.y].hit = true;
     }
-    return shipsArr[board[attackCoords.x][attackCoords.y].ship].isSunk();
   };
 
-  return { receiveAttack };
+  return { receiveAttack, board, shipsArr }; // shipsAarr will not be returned in the final product.
 };
 
-const gameboard3 = Gameboard();
-const gameboard6 = Gameboard2();
+const receiveAttackGB1 = Gameboard();
+initShipsArr(receiveAttackGB1.shipsArr);
+// Set as true to test when a ship actually populates the board.
+receiveAttackGB1.board[0][0].populated = true;
+receiveAttackGB1.board[0][0].ship = 0;
+// Below are test coordinates used to sink the ship.
+receiveAttackGB1.receiveAttack({ x: 0, y: 0 });
 
-export { gameboard3, gameboard6 };
+const receiveAttackGB2 = Gameboard();
+initBoardArr(receiveAttackGB2.board);
+initShipsArr(receiveAttackGB2.shipsArr);
+// Below are test coordinates used to sink the ship.
+receiveAttackGB2.receiveAttack({ x: 0, y: 1 });
+receiveAttackGB2.receiveAttack({ x: 0, y: 0 });
+
+const receiveAttackGB3 = Gameboard();
+initBoardArr(receiveAttackGB3.board);
+initShipsArr(receiveAttackGB3.shipsArr);
+// Test coordinates for attacking a spot that's not populated and hit.
+receiveAttackGB3.receiveAttack({ x: 3, y: 0 });
+
+export { receiveAttackGB1, receiveAttackGB2, receiveAttackGB3 };
