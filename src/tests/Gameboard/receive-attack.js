@@ -44,6 +44,11 @@ const Gameboard = () => {
     ) {
       board[attackCoord.x][attackCoord.y].hit = true;
       shipsArr[board[attackCoord.x][attackCoord.y].ship].hit(attackCoord);
+    } else if (
+      board[attackCoord.x][attackCoord.y].populated === false &&
+      board[attackCoord.x][attackCoord.y].hit === false
+    ) {
+      board[attackCoord.x][attackCoord.y].hit = true;
     }
   };
 
@@ -65,4 +70,10 @@ initShipsArr(receiveAttackGB2.shipsArr);
 receiveAttackGB2.receiveAttack({ x: 0, y: 1 });
 receiveAttackGB2.receiveAttack({ x: 0, y: 0 });
 
-export { receiveAttackGB1, receiveAttackGB2 };
+const receiveAttackGB3 = Gameboard();
+initBoardArr(receiveAttackGB3.board);
+initShipsArr(receiveAttackGB3.shipsArr);
+// Test coordinates for attacking a spot that's not populated and hit.
+receiveAttackGB3.receiveAttack({ x: 3, y: 0 });
+
+export { receiveAttackGB1, receiveAttackGB2, receiveAttackGB3 };
