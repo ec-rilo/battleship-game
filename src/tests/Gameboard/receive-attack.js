@@ -45,7 +45,6 @@ const Gameboard = () => {
       board[attackCoord.x][attackCoord.y].hit = true;
       shipsArr[board[attackCoord.x][attackCoord.y].ship].hit(attackCoord);
     }
-    return board[attackCoord.x][attackCoord.y]; // Remove this line on the final product
   };
 
   return { receiveAttack, board, shipsArr }; // shipsAarr will not be returned in the final product.
@@ -56,6 +55,8 @@ initShipsArr(gameboard3.shipsArr);
 // Set as true to test when a ship actually populates the board.
 gameboard3.board[0][0].populated = true;
 gameboard3.board[0][0].ship = 0;
+// Below are test coordinates used to sink the ship.
+gameboard3.receiveAttack({ x: 0, y: 0 });
 
 const gameboard6 = Gameboard();
 initBoardArr(gameboard6.board);
