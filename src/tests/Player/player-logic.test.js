@@ -1,5 +1,7 @@
-import player2 from './user-attack';
+import userAttackPlayer1 from './user-attack';
 
 test('user is capable of attacking enemy computer', () => {
-  expect(player2.gameboard.allSunk()).toBeTruthy();
+  expect(userAttackPlayer1.gameboard.allSunk()).toBeTruthy();
 });
+
+// test if computer is capable of making attacks.
