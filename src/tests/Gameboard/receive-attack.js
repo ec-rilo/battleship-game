@@ -35,17 +35,20 @@ const Gameboard = () => {
     }
   }
 
+  const shipsArr = [];
+
   const receiveAttack = (attackCoord) => {
     if (
       board[attackCoord.x][attackCoord.y].populated === true &&
       board[attackCoord.x][attackCoord.y].hit === false
     ) {
       board[attackCoord.x][attackCoord.y].hit = true;
+      shipsArr[board[attackCoord.x][attackCoord.y].ship].hit(attackCoord);
     }
-    return board[attackCoord.x][attackCoord.y]; // Remove this on the final product
+    return board[attackCoord.x][attackCoord.y]; // Remove this line on the final product
   };
 
-  return { receiveAttack, board };
+  return { receiveAttack, board, shipsArr }; // shipsAarr will not be returned in the final product.
 };
 
 const Gameboard2 = () => {
@@ -94,6 +97,11 @@ const gameboard3 = Gameboard();
 gameboard3.board[0][0].populated = true;
 gameboard3.board[0][0].ship = 0;
 
-const gameboard6 = Gameboard2();
+const gameboard6 = Gameboard();
+initBoardArr(gameboard6.board);
+initShipsArr(gameboard6.shipsArr);
+gameboard6.receiveAttack({ x: 0, y: 1 });
+gameboard6.receiveAttack({ x: 0, y: 0 });
+// Added this to sink the ship. Delete this in the final factory function.
 
 export { gameboard3, gameboard6 };
