@@ -58,11 +58,11 @@ receiveAttackGB1.board[0][0].ship = 0;
 // Below are test coordinates used to sink the ship.
 receiveAttackGB1.receiveAttack({ x: 0, y: 0 });
 
-const gameboard6 = Gameboard();
-initBoardArr(gameboard6.board);
-initShipsArr(gameboard6.shipsArr);
+const receiveAttackGB2 = Gameboard();
+initBoardArr(receiveAttackGB2.board);
+initShipsArr(receiveAttackGB2.shipsArr);
 // Below are test coordinates used to sink the ship.
-gameboard6.receiveAttack({ x: 0, y: 1 });
-gameboard6.receiveAttack({ x: 0, y: 0 });
+receiveAttackGB2.receiveAttack({ x: 0, y: 1 });
+receiveAttackGB2.receiveAttack({ x: 0, y: 0 });
 
-export { receiveAttackGB1, gameboard6 };
+export { receiveAttackGB1, receiveAttackGB2 };
