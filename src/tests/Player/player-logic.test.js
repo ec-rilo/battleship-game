@@ -4,6 +4,8 @@ import {
   compAttackPlayer1Arr,
   compAttackPlayer2,
   compAttackPlayer2Arr,
+  compAttackEnemy3,
+  compAttackPlayer3,
 } from './comp-attack';
 
 test('user is capable of attacking enemy computer', () => {
@@ -16,4 +18,10 @@ test('computer can attack enemy player', () => {
 
 test('computer can attack enemy player at random spots', () => {
   expect(compAttackPlayer2.gameboard.board).toEqual(compAttackPlayer2Arr);
+});
+
+test('Computer will not attack a hit location', () => {
+  expect(compAttackEnemy3.attack(compAttackPlayer3, 4, 1)).toMatch(
+    'invalid entry'
+  );
 });

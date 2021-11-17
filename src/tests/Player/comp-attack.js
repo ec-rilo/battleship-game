@@ -40,20 +40,25 @@ function getRandomInt(max) {
 
 const CompPlayer = () => {
   const gameboard = Gameboard();
-  const prevAttackCoords = [];
 
   // xCoord and yCoord will not be arguments in final product.
   const attack = (enemy, xCoord, yCoord) => {
     let isValidCoord = false;
-    while (isValidCoord === false) {
+    // Count only used to test if comp will only attack same spot once.
+    let count = 0; // Count will not be in final product
+    while (isValidCoord === false && count !== 5) {
       // xCoord here. use getRandomInt() to populated xCoord. Final product info.
       // yCoord here. use getRandomInt() to populated yCoord. Final product info.
       const attackCoord = { x: xCoord, y: yCoord };
       if (enemy.gameboard.board[xCoord][yCoord].hit === false) {
         enemy.damage(attackCoord);
-        prevAttackCoords.push(attackCoord);
         isValidCoord = true;
       }
+      count += 1; // remove in final product
+    }
+    // In final product, this 'return' and 'if' will not be here.
+    if (count === 5) {
+      return 'invalid entry';
     }
   };
 
@@ -91,9 +96,21 @@ compAttackPlayer2Arr[randXVal][randYVal] = {
   hit: true,
   ship: undefined,
 };
+
+/* Computer will not attack a hit location */
+
+const compAttackPlayer3 = Player();
+initShips1(compAttackPlayer3);
+
+const compAttackEnemy3 = CompPlayer();
+initShips2(compAttackEnemy3);
+compAttackEnemy3.attack(compAttackPlayer3, 4, 1);
+
 export {
   compAttackPlayer1,
   compAttackPlayer1Arr,
   compAttackPlayer2,
   compAttackPlayer2Arr,
+  compAttackEnemy3,
+  compAttackPlayer3,
 };
