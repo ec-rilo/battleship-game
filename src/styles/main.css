@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Black-Ops';
+  src: url('../fonts/Black_Ops_One/BlackOpsOne-Regular.ttf');
+}
+
+:root {
+  --main-color-1-bright: #12c80e;
+  --main-color-1-dim: #06ad12;
+  --font: 'Black-Ops';
+}
+
+body {
+  background-color: #000;
+}
+
+.title {
+  color: var(--main-color-1-bright);
+  font-family: var(--font);
+  font-size: 2.5rem;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.main-gb-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin-top: 50px;
+  margin-bottom: 75px;
+}
+
+.gameboard-interface {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 300px;
+  border: 3px solid var(--main-color-1-bright);
+}
+
+.gb-row {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+}
+
+.gb-column {
+  display: flex;
+  flex: 1;
+  box-sizing: border-box;
+  border: 1px solid var(--main-color-1-dim);
+  background-color: #020501;
+}
