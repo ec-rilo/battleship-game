@@ -86,3 +86,59 @@ footer > div > a > img {
   height: 35px;
   object-fit: contain;
 }
+
+/* Pop-up Container */
+
+.ship-placement-popup-container {
+  position: absolute;
+  width: 100%;
+  max-width: 350px;
+  top: 90px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #c4c4c4;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.popup-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  text-align: center;
+}
+
+.popup-text-container > p:nth-child(1) {
+  font-family: 'Black-Ops';
+  font-size: 1.3rem;
+}
+
+.popup-text-container > p:nth-child(2) {
+  font-family: var(--footer-font);
+  font-size: 1.3rem;
+}
+
+.popup-gb-container {
+  display: flex;
+  justify-content: center;
+}
+
+.rotate-ship-btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  height: 150px;
+}
+
+.rotate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid #000;
+  font-family: var(--footer-font);
+  background-color: var(--main-color-1-dim);
+}
