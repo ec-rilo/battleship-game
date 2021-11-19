@@ -8,9 +8,9 @@ populatedArr1[0][1] = { populated: true, hit: false, ship: 0 };
 const Gameboard = () => {
   const board = [];
 
-  for (let i = 0; i < 11; ++i) {
+  for (let i = 0; i < 10; ++i) {
     board.push([]);
-    for (let j = 0; j < 11; ++j) {
+    for (let j = 0; j < 10; ++j) {
       board[i][j] = { populated: false, hit: false, ship: undefined };
     }
   }
