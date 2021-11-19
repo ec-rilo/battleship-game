@@ -1,3 +1,22 @@
+@font-face {
+  font-family: 'Black-Ops';
+  src: url('../fonts/Black_Ops_One/BlackOpsOne-Regular.ttf');
+}
+
+:root {
+  --text-color-1: #12c80e;
+  --font: 'Black-Ops';
+}
+
 body {
   background-color: #000;
+}
+
+.title {
+  color: var(--text-color-1);
+  font-family: var(--font);
+  font-size: 2.5rem;
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
