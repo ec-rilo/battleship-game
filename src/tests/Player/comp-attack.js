@@ -27,10 +27,10 @@ function initShips1(player) {
 
 function initShips2(player) {
   player.gameboard.placeShip([
+    { x: 7, y: 6 },
     { x: 7, y: 7 },
     { x: 7, y: 8 },
     { x: 7, y: 9 },
-    { x: 7, y: 10 },
   ]);
 }
 
@@ -83,8 +83,8 @@ initShips1(compAttackPlayer2);
 
 const compAttackEnemy2 = CompPlayer();
 initShips2(compAttackEnemy2);
-const randXVal = getRandomInt(11);
-const randYVal = getRandomInt(11);
+const randXVal = getRandomInt(10);
+const randYVal = getRandomInt(10);
 compAttackEnemy2.attack(compAttackPlayer2, randXVal, randYVal);
 
 const compAttackPlayer2Arr = defaultBoardArr.map((arr) => [...arr]);
