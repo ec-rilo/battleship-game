@@ -29,3 +29,10 @@ body {
   margin-top: 50px;
   margin-bottom: 75px;
 }
+
+.gameboard-interface {
+  background-color: #c4c4c4;
+  height: 300px;
+  width: 300px;
+  border: 5px solid #797979;
+}
