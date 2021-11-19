@@ -65,10 +65,24 @@ footer > p {
   font-size: 0.8rem;
   line-height: 1.5;
   text-align: center;
-  padding: 20px 20px;
+  padding: 10px 20px 20px 20px;
 }
 
 footer > p > a {
   color: #0080ff;
   text-decoration: none;
+}
+
+footer > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer > div > img {
+  display: block;
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
 }
