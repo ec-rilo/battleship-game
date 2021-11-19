@@ -70,4 +70,5 @@ footer > p {
 
 footer > p > a {
   color: #0080ff;
+  text-decoration: none;
 }
