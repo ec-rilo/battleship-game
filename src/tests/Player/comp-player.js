@@ -11,8 +11,8 @@ const CompPlayer = () => {
     let isValidCoord = false;
 
     while (isValidCoord === false) {
-      const xCoord = getRandomInt(11);
-      const yCoord = getRandomInt(11);
+      const xCoord = getRandomInt(10);
+      const yCoord = getRandomInt(10);
       const attackCoord = { x: xCoord, y: yCoord };
       if (enemy.gameboard.board[xCoord][yCoord].hit === false) {
         enemy.damage(attackCoord);
