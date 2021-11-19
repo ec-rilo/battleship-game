@@ -1,0 +1,1 @@
+(()=>{"use strict";function e(e){for(var a=0;a<10;++a){var d=document.createElement("div");d.classList.add("gb-row");for(var r=0;r<10;++r){var t=document.createElement("div");t.classList.add("gb-column"),d.appendChild(t)}e.appendChild(d)}}e(document.querySelector(".gameboard-1")),e(document.querySelector(".gameboard-2"))})();
