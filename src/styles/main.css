@@ -31,8 +31,23 @@ body {
 }
 
 .gameboard-interface {
-  background-color: #c4c4c4;
+  display: flex;
+  flex-direction: column;
   height: 300px;
   width: 300px;
   border: 5px solid #797979;
+}
+
+.gb-row {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1;
+}
+
+.gb-column {
+  display: flex;
+  flex: 1;
+  box-sizing: border-box;
+  border: 1px solid #06ad12;
+  background-color: #020501;
 }
