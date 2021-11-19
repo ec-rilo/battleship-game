@@ -5,6 +5,7 @@
 
 :root {
   --main-color-1-bright: #12c80e;
+  --main-color-1-dim: #06ad12;
   --font: 'Black-Ops';
 }
 
@@ -48,6 +49,6 @@ body {
   display: flex;
   flex: 1;
   box-sizing: border-box;
-  border: 1px solid #06ad12;
+  border: 1px solid var(--main-color-1-dim);
   background-color: #020501;
 }
