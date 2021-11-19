@@ -80,7 +80,7 @@ footer > div {
   gap: 20px;
 }
 
-footer > div > img {
+footer > div > a > img {
   display: block;
   width: 35px;
   height: 35px;
