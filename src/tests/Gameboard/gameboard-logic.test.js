@@ -7,7 +7,7 @@ import {
 } from './receive-attack';
 import { gameboard4, gameboard5 } from './ship-sunk-check';
 
-test('returns 11 rows and 11 columns in the 2d array initialized as false', () => {
+test('returns 10 rows and 10 columns in the 2d array initialized as false', () => {
   expect(gameboard1.popBoard()).toEqual(defaultBoardArr);
 });
 
