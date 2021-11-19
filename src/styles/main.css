@@ -3,10 +3,16 @@
   src: url('../fonts/Black_Ops_One/BlackOpsOne-Regular.ttf');
 }
 
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('../fonts/Roboto/Roboto-Regular.ttf');
+}
+
 :root {
   --main-color-1-bright: #12c80e;
   --main-color-1-dim: #06ad12;
   --font: 'Black-Ops';
+  --footer-font: 'Roboto-Regular';
 }
 
 body {
@@ -51,4 +57,18 @@ body {
   box-sizing: border-box;
   border: 1px solid var(--main-color-1-dim);
   background-color: #020501;
+}
+
+footer > p {
+  color: var(--main-color-1-bright);
+  font-family: var(--footer-font);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  text-align: center;
+  padding: 20px 20px;
+}
+
+footer > p > a {
+  color: #0080ff;
+  text-decoration: none;
 }
