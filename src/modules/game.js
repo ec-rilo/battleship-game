@@ -128,6 +128,9 @@ const Game = () => {
       rowSquares.forEach((square) => {
         square.addEventListener('click', () => {
           square.classList.add('square-hit');
+          if (square.classList.contains('square-populated')) {
+            square.classList.add('direct-square-hit');
+          }
         });
       });
     }
@@ -160,8 +163,12 @@ const Game = () => {
     initHits(compGB);
   };
 
-  const startGame = () => {
+  const initUserBoard = () => {
     initUserShips();
+  };
+
+  const startGame = () => {
+    initUserBoard();
     initCompBoard();
     let end = false;
     let winner;
