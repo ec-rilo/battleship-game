@@ -7,13 +7,14 @@ const Game = () => {
   const userGB = document.querySelector('.gameboard-1');
   const compGB = document.querySelector('.gameboard-2');
 
-  const placeShip = (coords) => {
+  const placeShip = (coords, gb) => {
+    const rows = [...gb.children];
     for (let i = 0; i < coords.length; ++i) {
       const coord = coords[i];
-      const row = document.querySelector(`.gb-row-${coord.x}`);
+
+      const row = rows[coord.x];
 
       const rowSquares = [...row.children];
-
       const square = rowSquares[coord.y];
       square.classList.add('square-populated');
     }
@@ -53,19 +54,19 @@ const Game = () => {
     ];
 
     user.gameboard.placeShip(userShip1);
-    placeShip(userShip1);
+    placeShip(userShip1, userGB);
 
     user.gameboard.placeShip(userShip2);
-    placeShip(userShip2);
+    placeShip(userShip2, userGB);
 
     user.gameboard.placeShip(userShip3);
-    placeShip(userShip3);
+    placeShip(userShip3, userGB);
 
     user.gameboard.placeShip(userShip3);
-    placeShip(userShip4);
+    placeShip(userShip4, userGB);
 
     user.gameboard.placeShip(userShip3);
-    placeShip(userShip5);
+    placeShip(userShip5, userGB);
   };
 
   const startGame = () => {
