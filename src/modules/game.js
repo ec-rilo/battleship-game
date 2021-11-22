@@ -172,11 +172,22 @@ const Game = () => {
     initCompBoard();
     let end = false;
     let winner;
-    while (end != true) {
+
+    while (end !== true) {
       // if the enemies ship are sunk or player ships are sunk
       // end = true
       // winner = person who won
-      end = true;
+      if (user.gameboard.allSunk()) {
+        console.log('You won!');
+        console.log('Play Again?');
+        end = true;
+      }
+
+      if (comp.gameboard.allSunk()) {
+        console.log('You lost!');
+        console.log('Play Again?');
+        end = true;
+      }
     }
   };
 
