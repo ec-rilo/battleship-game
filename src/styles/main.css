@@ -11,6 +11,8 @@
 :root {
   --main-color-1-bright: #12c80e;
   --main-color-1-dim: #06ad12;
+  --main-color-2: #0080ff;
+  --main-color-3: #020501;
   --font: 'Black-Ops';
   --footer-font: 'Roboto-Regular';
 }
@@ -57,6 +59,11 @@ body {
   box-sizing: border-box;
   border: 1px solid var(--main-color-1-dim);
   background-color: #020501;
+}
+
+.square-hover {
+  background-color: #028601;
+  cursor: pointer;
 }
 
 footer > p {
