@@ -66,6 +66,10 @@ body {
   cursor: pointer;
 }
 
+.square-populated {
+  background-color: var(--main-color-1-bright);
+}
+
 footer > p {
   color: var(--main-color-1-bright);
   font-family: var(--footer-font);
