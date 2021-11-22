@@ -152,4 +152,9 @@ footer > div > a > img {
   border: 2px solid #000;
   font-family: var(--footer-font);
   background-color: var(--main-color-1-dim);
+  cursor: pointer;
+}
+
+.rotate-btn:active {
+  background-color: #fff;
 }
