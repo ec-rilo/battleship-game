@@ -2,9 +2,11 @@ function popGBSquares(gb) {
   for (let i = 0; i < 10; ++i) {
     const row = document.createElement('div');
     row.classList.add('gb-row');
+    row.classList.add(`gb-row-${i}`);
     for (let j = 0; j < 10; ++j) {
       const square = document.createElement('div');
       square.classList.add('gb-square');
+      square.classList.add(`gb-square-${j}`);
       row.appendChild(square);
     }
     gb.appendChild(row);
