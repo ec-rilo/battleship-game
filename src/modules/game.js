@@ -118,6 +118,21 @@ const Game = () => {
     placeShip(compShip5, compGB);
   };
 
+  const initHits = (gb) => {
+    const rows = [...compGB.children];
+    for (let i = 0; i < rows.length; ++i) {
+      const row = rows[i];
+
+      const rowSquares = [...row.children];
+
+      rowSquares.forEach((square) => {
+        square.addEventListener('click', () => {
+          square.classList.add('square-hit');
+        });
+      });
+    }
+  };
+
   const initCompBoard = () => {
     const rows = [...compGB.children];
     for (let i = 0; i < rows.length; ++i) {
@@ -139,6 +154,8 @@ const Game = () => {
         });
       });
     }
+
+    initHits(compGB);
   };
 
   const startGame = () => {
