@@ -70,6 +70,10 @@ body {
   background-color: var(--main-color-1-bright);
 }
 
+.square-hit {
+  background-color: var(--main-color-2);
+}
+
 footer > p {
   color: var(--main-color-1-bright);
   font-family: var(--footer-font);
