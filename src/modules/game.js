@@ -155,13 +155,13 @@ const Game = () => {
   };
 
   const initCompBoard = () => {
+    initCompShips();
     initHoverColor(compGB);
     initHits(compGB);
   };
 
   const startGame = () => {
     initUserShips();
-    initCompShips();
     initCompBoard();
     let end = false;
     let winner;
