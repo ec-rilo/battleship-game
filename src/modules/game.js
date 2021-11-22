@@ -119,7 +119,7 @@ const Game = () => {
   };
 
   const initHits = (gb) => {
-    const rows = [...compGB.children];
+    const rows = [...gb.children];
     for (let i = 0; i < rows.length; ++i) {
       const row = rows[i];
 
