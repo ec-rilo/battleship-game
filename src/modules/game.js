@@ -9,7 +9,6 @@ const Game = () => {
 
   const placeShip = (coords, gb) => {
     const rows = [...gb.children];
-    console.log(gb);
     for (let i = 0; i < coords.length; ++i) {
       const coord = coords[i];
 
