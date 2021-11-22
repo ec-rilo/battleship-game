@@ -148,9 +148,7 @@ const Game = () => {
         });
 
         square.addEventListener('mouseout', () => {
-          if (!square.classList.contains('square-hit')) {
-            square.classList.remove('square-hover');
-          }
+          square.classList.remove('square-hover');
         });
       });
     }
