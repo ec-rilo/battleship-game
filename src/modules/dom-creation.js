@@ -75,4 +75,10 @@ function createStartPopup() {
   return card;
 }
 
-export { popGBSquares, createStartPopup };
+function removeStartPopup() {
+  const card = document.createElement('div');
+  card.classList.add('ship-placement-popup-container');
+  card.remove();
+}
+
+export { popGBSquares, createStartPopup, removeStartPopup };
