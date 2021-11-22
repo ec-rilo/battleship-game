@@ -9,6 +9,7 @@ const Game = () => {
 
   const placeShip = (coords, gb) => {
     const rows = [...gb.children];
+    console.log(gb);
     for (let i = 0; i < coords.length; ++i) {
       const coord = coords[i];
 
@@ -69,8 +70,58 @@ const Game = () => {
     placeShip(userShip5, userGB);
   };
 
+  const initCompShips = () => {
+    const compShip1 = [
+      { x: 5, y: 1 },
+      { x: 5, y: 2 },
+    ];
+
+    const compShip2 = [
+      { x: 2, y: 6 },
+      { x: 2, y: 7 },
+      { x: 2, y: 8 },
+    ];
+
+    const compShip3 = [
+      { x: 4, y: 6 },
+      { x: 4, y: 7 },
+      { x: 4, y: 8 },
+    ];
+
+    const compShip4 = [
+      { x: 7, y: 6 },
+      { x: 7, y: 7 },
+      { x: 7, y: 8 },
+      { x: 7, y: 9 },
+    ];
+
+    const compShip5 = [
+      { x: 9, y: 5 },
+      { x: 9, y: 6 },
+      { x: 9, y: 7 },
+      { x: 9, y: 8 },
+      { x: 9, y: 9 },
+    ];
+
+    comp.gameboard.placeShip(compShip1);
+    placeShip(compShip1, compGB);
+
+    comp.gameboard.placeShip(compShip2);
+    placeShip(compShip2, compGB);
+
+    comp.gameboard.placeShip(compShip3);
+    placeShip(compShip3, compGB);
+
+    comp.gameboard.placeShip(compShip3);
+    placeShip(compShip4, compGB);
+
+    comp.gameboard.placeShip(compShip3);
+    placeShip(compShip5, compGB);
+  };
+
   const startGame = () => {
     initUserShips();
+    initCompShips();
     let end = false;
     // while (end != true) {
     //   //
