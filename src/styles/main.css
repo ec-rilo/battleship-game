@@ -51,7 +51,7 @@ body {
   flex: 1;
 }
 
-.gb-column {
+.gb-square {
   display: flex;
   flex: 1;
   box-sizing: border-box;

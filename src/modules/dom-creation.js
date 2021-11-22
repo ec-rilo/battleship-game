@@ -3,9 +3,9 @@ function popGBSquares(gb) {
     const row = document.createElement('div');
     row.classList.add('gb-row');
     for (let j = 0; j < 10; ++j) {
-      const column = document.createElement('div');
-      column.classList.add('gb-column');
-      row.appendChild(column);
+      const square = document.createElement('div');
+      square.classList.add('gb-square');
+      row.appendChild(square);
     }
     gb.appendChild(row);
   }
