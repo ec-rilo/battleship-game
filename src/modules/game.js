@@ -118,13 +118,41 @@ const Game = () => {
     placeShip(compShip5, compGB);
   };
 
+  const initCompBoard = () => {
+    const rows = [...compGB.children];
+    for (let i = 0; i < rows.length; ++i) {
+      const row = rows[i];
+
+      const rowSquares = [...row.children];
+
+      rowSquares.forEach((square) => {
+        square.addEventListener('mouseover', () => {
+          if (!square.classList.contains('square-hit')) {
+            square.classList.add('square-hover');
+          }
+        });
+
+        square.addEventListener('mouseout', () => {
+          if (!square.classList.contains('square-hit')) {
+            square.classList.remove('square-hover');
+          }
+        });
+      });
+    }
+  };
+
   const startGame = () => {
     initUserShips();
     initCompShips();
+    initCompBoard();
     let end = false;
-    // while (end != true) {
-    //   //
-    // }
+    let winner;
+    while (end != true) {
+      // if the enemies ship are sunk or player ships are sunk
+      // end = true
+      // winner = person who won
+      end = true;
+    }
   };
 
   return { startGame };
