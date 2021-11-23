@@ -183,11 +183,11 @@ const Game = () => {
 
   const checkWin = () => {
     if (user.gameboard.allSunk()) {
-      console.log('You won!');
+      console.log('You Lost!');
       console.log('Play Again?');
     }
     if (comp.gameboard.allSunk()) {
-      console.log('You lost!');
+      console.log('You Won!');
       console.log('Play Again?');
     }
   };
