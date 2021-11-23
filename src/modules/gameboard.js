@@ -12,6 +12,10 @@ const Gameboard = () => {
 
   const shipsArr = [];
 
+  function getBoard() {
+    return board;
+  }
+
   const placeShip = (shipCoords) => {
     let available = false;
     for (let i = 0; i < shipCoords.length; ++i) {
@@ -60,10 +64,6 @@ const Gameboard = () => {
       }
     }
   };
-
-  function getBoard() {
-    return board;
-  }
 
   return { placeShip, receiveAttack, allSunk, getBoard, resetBoard };
 };
