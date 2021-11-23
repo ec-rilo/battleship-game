@@ -171,6 +171,8 @@ footer > div > a > img {
   background-color: #fff;
 }
 
+/* Win Popup */
+
 .win-popup {
   position: fixed;
   display: flex;
@@ -207,4 +209,15 @@ footer > div > a > img {
 
 .replay-btn:active {
   background-color: white;
+}
+
+.black-bg {
+  position: fixed;
+  background-color: #000;
+  opacity: 0.5;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
