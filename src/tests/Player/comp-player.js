@@ -15,7 +15,8 @@ const CompPlayer = () => {
       const xCoord = getRandomInt(10);
       const yCoord = getRandomInt(10);
       attackCoord = { x: xCoord, y: yCoord };
-      if (enemy.gameboard.board[xCoord][yCoord].hit === false) {
+      const enemyGB = enemy.gameboard.getBoard();
+      if (enemyGB[xCoord][yCoord].hit === false) {
         enemy.damage(attackCoord);
         isValidCoord = true;
       }
