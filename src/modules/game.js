@@ -111,13 +111,11 @@ const Game = () => {
     comp.gameboard.placeShip(compShip3);
     placeShip(compShip3, compGB);
 
-    comp.gameboard.placeShip(compShip3);
+    comp.gameboard.placeShip(compShip4);
     placeShip(compShip4, compGB);
 
-    comp.gameboard.placeShip(compShip3);
+    comp.gameboard.placeShip(compShip5);
     placeShip(compShip5, compGB);
-
-    console.log(comp.gameboard.board);
   };
 
   const initHits = (gb) => {
