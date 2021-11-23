@@ -127,6 +127,9 @@ const Game = () => {
 
       rowSquares.forEach((square) => {
         square.addEventListener('click', () => {
+          const name = square.className;
+          const rowNum = parseInt(name.replace(/\D/g, ''), 10);
+          user.attack(comp, i, rowNum);
           square.classList.add('square-hit');
           if (square.classList.contains('square-populated')) {
             square.classList.add('direct-square-hit');
