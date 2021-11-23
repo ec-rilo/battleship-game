@@ -50,7 +50,8 @@ const CompPlayer = () => {
       // xCoord here. use getRandomInt() to populated xCoord. Final product info.
       // yCoord here. use getRandomInt() to populated yCoord. Final product info.
       const attackCoord = { x: xCoord, y: yCoord };
-      if (enemy.gameboard.board[xCoord][yCoord].hit === false) {
+      const enemyGB = enemy.gameboard.getBoard();
+      if (enemyGB[xCoord][yCoord].hit === false) {
         enemy.damage(attackCoord);
         isValidCoord = true;
       }
