@@ -20,7 +20,8 @@ const CompPlayer = () => {
       const xCoord = 4; // Placeholder to see if attackCoord will be returned
       const yCoord = 2; // Placeholder to see if attackCoord will be returned
       attackCoord = { x: xCoord, y: yCoord };
-      if (enemy.gameboard.board[xCoord][yCoord].hit === false) {
+      const enemyGB = enemy.gameboard.getBoard();
+      if (enemyGB[xCoord][yCoord].hit === false) {
         enemy.damage(attackCoord);
         isValidCoord = true;
       }
