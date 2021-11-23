@@ -129,11 +129,12 @@ const Game = () => {
         square.addEventListener('click', () => {
           const name = square.className;
           const rowNum = parseInt(name.replace(/\D/g, ''), 10);
-          user.attack(comp, i, rowNum);
+          user.attack(comp, { x: i, y: rowNum });
           square.classList.add('square-hit');
           if (square.classList.contains('square-populated')) {
             square.classList.add('direct-square-hit');
           }
+          checkWin();
         });
       });
     }
@@ -206,6 +207,7 @@ const Game = () => {
             square.classList.add('marked');
             comp.attack(user);
             attackUser(comp.getAttackCoord());
+            checkWin();
           }
         });
       });
