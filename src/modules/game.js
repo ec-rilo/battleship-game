@@ -1,6 +1,6 @@
 import Player from './player';
 import compPlayer from './comp-player';
-import { createWinPopup, createBlackBg } from './dom-creation';
+import { createWinPopup, createBlackBg, popGBSquares } from './dom-creation';
 
 const Game = () => {
   const user = Player();
@@ -19,6 +19,13 @@ const Game = () => {
       const square = rowSquares[coord.y];
       square.classList.add('square-populated');
     }
+  };
+
+  const resetBoard = (gb) => {
+    const rows = [...gb.children];
+    rows.forEach((row) => {
+      row.remove();
+    });
   };
 
   const initUserShips = () => {
@@ -141,6 +148,8 @@ const Game = () => {
             body.appendChild(background);
             const winPopup = createWinPopup(true);
             body.appendChild(winPopup);
+            const replayBtn = document.querySelector('.replay-btn');
+            replayBtn.addEventListener('click', () => resetGame());
           }
         });
       });
@@ -211,6 +220,8 @@ const Game = () => {
               body.appendChild(background);
               const winPopup = createWinPopup(false);
               body.appendChild(winPopup);
+              const replayBtn = document.querySelector('.replay-btn');
+              replayBtn.addEventListener('click', () => resetGame());
             }
           }
         });
@@ -218,7 +229,23 @@ const Game = () => {
     }
   };
 
-  return { startGame };
+  const resetGame = () => {
+    user.gameboard.resetBoard();
+    comp.gameboard.resetBoard();
+
+    const winPopup = document.querySelector('.win-popup');
+    const blackBg = document.querySelector('.black-bg');
+    winPopup.remove();
+    blackBg.remove();
+
+    resetBoard(userGB);
+    resetBoard(compGB);
+    popGBSquares(userGB);
+    popGBSquares(compGB);
+    startGame();
+  };
+
+  return { startGame, resetGame };
 };
 
 const game = Game();
