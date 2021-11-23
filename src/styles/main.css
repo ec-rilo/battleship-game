@@ -74,6 +74,10 @@ body {
   background-color: var(--main-color-2);
 }
 
+.direct-square-hit {
+  background-color: rgb(255, 133, 133);
+}
+
 footer > p {
   color: var(--main-color-1-bright);
   font-family: var(--footer-font);
