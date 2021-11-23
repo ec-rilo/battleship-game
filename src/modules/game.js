@@ -199,17 +199,19 @@ const Game = () => {
       const rowSquares = [...row.children];
       rowSquares.forEach((square) => {
         square.addEventListener('click', () => {
-          if (!square.classList.contains('marked')) {
-            square.classList.add('marked');
-            comp.attack(user);
-            attackUser(comp.getAttackCoord());
-          }
-          if (user.gameboard.allSunk()) {
-            const body = document.querySelector('body');
-            const background = createBlackBg();
-            body.appendChild(background);
-            const winPopup = createWinPopup(false);
-            body.appendChild(winPopup);
+          if (!comp.gameboard.allSunk()) {
+            if (!square.classList.contains('marked')) {
+              square.classList.add('marked');
+              comp.attack(user);
+              attackUser(comp.getAttackCoord());
+            }
+            if (user.gameboard.allSunk()) {
+              const body = document.querySelector('body');
+              const background = createBlackBg();
+              body.appendChild(background);
+              const winPopup = createWinPopup(false);
+              body.appendChild(winPopup);
+            }
           }
         });
       });
