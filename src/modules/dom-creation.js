@@ -107,7 +107,7 @@ function createWinPopup(userWin) {
 
 function createBlackBg() {
   const background = document.createElement('div');
-  background.classList.add('win-popup-background');
+  background.classList.add('black-bg');
 
   return background;
 }
