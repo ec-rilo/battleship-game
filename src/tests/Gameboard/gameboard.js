@@ -12,7 +12,12 @@ const Gameboard = () => {
 
   const shipsArr = [];
 
+  function getBoard() {
+    return board;
+  }
+
   const placeShip = (shipCoords) => {
+    board = getBoard();
     let available = false;
     for (let i = 0; i < shipCoords.length; ++i) {
       if (board[shipCoords[i].x][shipCoords[i].y].populated === false) {
@@ -30,6 +35,7 @@ const Gameboard = () => {
   };
 
   const receiveAttack = (attackCoord) => {
+    board = getBoard();
     if (
       board[attackCoord.x][attackCoord.y].populated === true &&
       board[attackCoord.x][attackCoord.y].hit === false
@@ -60,10 +66,6 @@ const Gameboard = () => {
       }
     }
   };
-
-  function getBoard() {
-    return board;
-  }
 
   return { placeShip, receiveAttack, allSunk, getBoard, resetBoard };
 };
