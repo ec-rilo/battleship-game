@@ -6,6 +6,7 @@ function getRandomInt(max) {
 
 const CompPlayer = () => {
   const gameboard = Gameboard();
+  let attackCoord = {};
 
   const attack = (enemy) => {
     let isValidCoord = false;
@@ -13,7 +14,7 @@ const CompPlayer = () => {
     while (isValidCoord === false) {
       const xCoord = getRandomInt(10);
       const yCoord = getRandomInt(10);
-      const attackCoord = { x: xCoord, y: yCoord };
+      attackCoord = { x: xCoord, y: yCoord };
       if (enemy.gameboard.board[xCoord][yCoord].hit === false) {
         enemy.damage(attackCoord);
         isValidCoord = true;
@@ -21,11 +22,15 @@ const CompPlayer = () => {
     }
   };
 
+  function getAttackCoord() {
+    return attackCoord;
+  }
+
   const damage = (attackCoords) => {
     gameboard.receiveAttack(attackCoords);
   };
 
-  return { attack, damage, gameboard };
+  return { attack, damage, gameboard, getAttackCoord };
 };
 
 export default CompPlayer;
