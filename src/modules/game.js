@@ -167,27 +167,34 @@ const Game = () => {
     initUserShips();
   };
 
+  const attackUser = (attackCoord) => {
+    const row = [...[...userGB.children][attackCoord.x].children];
+    const hitSquare = row[attackCoord.y];
+    if (hitSquare.classList.contains('square-populated')) {
+      hitSquare.classList.add('direct-square-hit');
+    } else {
+      hitSquare.classList.add('square-hit');
+    }
+  };
+
   const startGame = () => {
     initUserBoard();
     initCompBoard();
-    let end = false;
-    let winner;
 
-    while (end !== true) {
-      // if the enemies ship are sunk or player ships are sunk
-      // end = true
-      // winner = person who won
-      if (user.gameboard.allSunk()) {
-        console.log('You won!');
-        console.log('Play Again?');
-        end = true;
-      }
-
-      if (comp.gameboard.allSunk()) {
-        console.log('You lost!');
-        console.log('Play Again?');
-        end = true;
-      }
+    // Listens for user to click so enemy can attack.
+    const rows = [...compGB.children];
+    for (let i = 0; i < rows.length; ++i) {
+      const row = rows[i];
+      const rowSquares = [...row.children];
+      rowSquares.forEach((square) => {
+        square.addEventListener('click', () => {
+          if (!square.classList.contains('marked')) {
+            square.classList.add('marked');
+            comp.attack(user);
+            attackUser(comp.getAttackCoord());
+          }
+        });
+      });
     }
   };
 
