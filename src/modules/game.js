@@ -177,6 +177,17 @@ const Game = () => {
     }
   };
 
+  const checkWin = () => {
+    if (user.gameboard.allSunk()) {
+      console.log('You won!');
+      console.log('Play Again?');
+    }
+    if (comp.gameboard.allSunk()) {
+      console.log('You lost!');
+      console.log('Play Again?');
+    }
+  };
+
   const startGame = () => {
     initUserBoard();
     initCompBoard();
