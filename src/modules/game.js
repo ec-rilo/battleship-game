@@ -62,10 +62,10 @@ const Game = () => {
     user.gameboard.placeShip(userShip3);
     placeShip(userShip3, userGB);
 
-    user.gameboard.placeShip(userShip3);
+    user.gameboard.placeShip(userShip4);
     placeShip(userShip4, userGB);
 
-    user.gameboard.placeShip(userShip3);
+    user.gameboard.placeShip(userShip5);
     placeShip(userShip5, userGB);
   };
 
@@ -116,6 +116,8 @@ const Game = () => {
 
     comp.gameboard.placeShip(compShip3);
     placeShip(compShip5, compGB);
+
+    console.log(comp.gameboard.board);
   };
 
   const initHits = (gb) => {
