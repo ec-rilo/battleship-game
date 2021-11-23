@@ -1,5 +1,6 @@
 import Player from './player';
 import compPlayer from './comp-player';
+import { createWinPopup } from './dom-creation';
 
 const Game = () => {
   const user = Player();
@@ -183,10 +184,16 @@ const Game = () => {
 
   const checkWin = () => {
     if (user.gameboard.allSunk()) {
+      const body = document.querySelector('body');
+      const winPopup = createWinPopup(false);
+      body.appendChild(winPopup);
       console.log('You Lost!');
       console.log('Play Again?');
     }
     if (comp.gameboard.allSunk()) {
+      const body = document.querySelector('body');
+      const winPopup = createWinPopup(true);
+      body.appendChild(winPopup);
       console.log('You Won!');
       console.log('Play Again?');
     }
