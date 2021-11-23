@@ -14,11 +14,11 @@ test('user is capable of attacking enemy computer', () => {
 });
 
 test('computer can attack enemy player', () => {
-  expect(compAttackPlayer1.gameboard.board).toEqual(compAttackPlayer1Arr);
+  expect(compAttackPlayer1.gameboard.getBoard()).toEqual(compAttackPlayer1Arr);
 });
 
 test('computer can attack enemy player at random spots', () => {
-  expect(compAttackPlayer2.gameboard.board).toEqual(compAttackPlayer2Arr);
+  expect(compAttackPlayer2.gameboard.getBoard()).toEqual(compAttackPlayer2Arr);
 });
 
 test('Computer will not attack a hit location', () => {
