@@ -135,7 +135,13 @@ const Game = () => {
           if (square.classList.contains('square-populated')) {
             square.classList.add('direct-square-hit');
           }
-          checkWin();
+          if (comp.gameboard.allSunk()) {
+            const body = document.querySelector('body');
+            const background = createBlackBg();
+            body.appendChild(background);
+            const winPopup = createWinPopup(true);
+            body.appendChild(winPopup);
+          }
         });
       });
     }
@@ -182,27 +188,6 @@ const Game = () => {
     }
   };
 
-  const checkWin = () => {
-    if (user.gameboard.allSunk()) {
-      const body = document.querySelector('body');
-      const background = createBlackBg();
-      body.appendChild(background);
-      const winPopup = createWinPopup(false);
-      body.appendChild(winPopup);
-      console.log('You Lost!');
-      console.log('Play Again?');
-    }
-    if (comp.gameboard.allSunk()) {
-      const body = document.querySelector('body');
-      const background = createBlackBg();
-      body.appendChild(background);
-      const winPopup = createWinPopup(true);
-      body.appendChild(winPopup);
-      console.log('You Won!');
-      console.log('Play Again?');
-    }
-  };
-
   const startGame = () => {
     initUserBoard();
     initCompBoard();
@@ -218,7 +203,13 @@ const Game = () => {
             square.classList.add('marked');
             comp.attack(user);
             attackUser(comp.getAttackCoord());
-            checkWin();
+          }
+          if (user.gameboard.allSunk()) {
+            const body = document.querySelector('body');
+            const background = createBlackBg();
+            body.appendChild(background);
+            const winPopup = createWinPopup(false);
+            body.appendChild(winPopup);
           }
         });
       });
