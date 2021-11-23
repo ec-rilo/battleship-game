@@ -9,10 +9,6 @@ function initShips1(player) {
   ]);
 }
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
 const CompPlayer = () => {
   const gameboard = Gameboard();
   let attackCoord = {};
