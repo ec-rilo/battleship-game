@@ -13,6 +13,77 @@ function popGBSquares(gb) {
   }
 }
 
+// Start Popup = spu
+function spuGridLogic(grid, btnContainer) {
+  let ships = [
+    [{}, {}, {}, {}, {}],
+    [{}, {}, {}, {}],
+    [{}, {}, {}],
+    [{}, {}, {}],
+    [{}, {}],
+  ];
+
+  let count = 0;
+
+  const rotateXBtn = btnContainer.firstChild;
+  const rotateYBtn = btnContainer.firstChild.nextSibling;
+
+  rotateXBtn.addEventListener('click', () => {
+    rotateXBtn.classList.add('rotate-btn-active');
+    if (rotateYBtn.classList.contains('rotate-btn-active')) {
+      rotateYBtn.classList.remove('rotate-btn-active');
+    }
+  });
+
+  rotateYBtn.addEventListener('click', () => {
+    rotateYBtn.classList.add('rotate-btn-active');
+    if (rotateXBtn.classList.contains('rotate-btn-active')) {
+      rotateXBtn.classList.remove('rotate-btn-active');
+    }
+  });
+
+  const initEachSquare = (row) => {
+    row.forEach((square) => {
+      square.addEventListener('mouseover', () => {
+        const shipSize = ships[count].length;
+        const hoverShip = document.createElement('div');
+        hoverShip.classList.add('floating-ship-hover');
+
+        /* calc() is used to make it so the hover ship doesn't underflow
+         * it's required boxes.
+         *
+         * shipSize will determine the amount of boxes to cover
+         *
+         * shipSize * 2 is the offset needed to make the hover ship fit
+         * it's required boxes.
+         */
+        if (rotateXBtn.classList.contains('rotate-btn-active')) {
+          hoverShip.style.width = `calc(${shipSize}00% + ${shipSize * 2}px)`;
+          hoverShip.style.height = '100%';
+        } else if (rotateYBtn.classList.contains('rotate-btn-active')) {
+          hoverShip.style.height = `calc(${shipSize}00% + ${shipSize * 2}px)`;
+          hoverShip.style.width = '100%';
+        }
+        square.appendChild(hoverShip);
+      });
+      square.addEventListener('mouseout', () => {
+        if (square.firstChild) {
+          square.firstChild.remove();
+        }
+      });
+
+      square.addEventListener('click', () => {
+        count += 1;
+      });
+    });
+  };
+
+  const rows = [...grid.children];
+  const rowSquares = [];
+  rows.forEach((row) => rowSquares.push([...row.children]));
+  rowSquares.forEach((row) => initEachSquare(row));
+}
+
 function createStartPopup() {
   const createCard = () => {
     const card = document.createElement('div');
@@ -71,8 +142,10 @@ function createStartPopup() {
   const btnContainer = createBtnContainer();
   const gridContainer = createGridContainer();
 
+  popGBSquares(gridContainer.firstChild);
   const containerArr = [textContainer, btnContainer, gridContainer];
   containerArr.forEach((container) => card.appendChild(container));
+  spuGridLogic(gridContainer.firstChild, btnContainer);
 
   return card;
 }
