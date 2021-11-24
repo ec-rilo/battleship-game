@@ -42,8 +42,8 @@ function spuGridLogic(grid, btnContainer) {
     }
   });
 
-  const initEachSquare = (row) => {
-    row.forEach((square) => {
+  const initEachSquare = (rowArr) => {
+    rowArr.forEach((square) => {
       square.addEventListener('mouseover', () => {
         const shipSize = ships[count].length;
         const hoverShip = document.createElement('div');
@@ -71,9 +71,24 @@ function spuGridLogic(grid, btnContainer) {
           square.firstChild.remove();
         }
       });
-
       square.addEventListener('click', () => {
-        count += 1;
+        const shipSize = ships[count].length;
+        const currRow = square.parentElement;
+        const rowNum = parseInt(currRow.className.replace(/^\D+/g, ''), 10);
+        const squareNum = parseInt(square.className.replace(/^\D+/g, ''), 10);
+
+        if (
+          rotateXBtn.classList.contains('rotate-btn-active') &&
+          squareNum + shipSize <= 10 &&
+          !square.classList.contains('popup-square-active')
+        ) {
+          let currSquare = square;
+          for (let i = 0; i < ships[count].length; ++i) {
+            currSquare.classList.add('popup-square-active');
+            currSquare = currSquare.nextSibling;
+          }
+          count += 1;
+        }
       });
     });
   };
@@ -135,6 +150,19 @@ function createStartPopup() {
     gameboard.classList.add('gameboard-interface');
     container.appendChild(gameboard);
 
+    for (let i = 0; i < 10; ++i) {
+      const row = document.createElement('div');
+      row.classList.add('gb-row');
+      row.classList.add(`gb-popup-start-row-${i}`);
+      for (let j = 0; j < 10; ++j) {
+        const square = document.createElement('div');
+        square.classList.add('gb-square');
+        square.classList.add(`gb-popup-start-square-${j}`);
+        row.appendChild(square);
+      }
+      gameboard.appendChild(row);
+    }
+
     return container;
   };
 
@@ -143,7 +171,6 @@ function createStartPopup() {
   const btnContainer = createBtnContainer();
   const gridContainer = createGridContainer();
 
-  popGBSquares(gridContainer.firstChild);
   const containerArr = [textContainer, btnContainer, gridContainer];
   containerArr.forEach((container) => card.appendChild(container));
   spuGridLogic(gridContainer.firstChild, btnContainer);
