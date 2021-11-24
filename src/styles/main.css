@@ -54,6 +54,7 @@ body {
 }
 
 .gb-square {
+  position: relative;
   display: flex;
   flex: 1;
   box-sizing: border-box;
@@ -169,6 +170,22 @@ footer > div > a > img {
 
 .rotate-btn:active {
   background-color: #fff;
+}
+
+.popup-square-active {
+  background-color: #028601;
+  cursor: pointer;
+}
+
+/* 
+ * The height and width are determined in dom-creation.js within
+ * The initEachSquare() function.
+ */
+.floating-ship-hover {
+  position: absolute;
+  background-color: red;
+  z-index: 3;
+  pointer-events: none;
 }
 
 /* Win Popup */
