@@ -113,6 +113,7 @@ function createStartPopup() {
     const xBtn = document.createElement('div');
     xBtn.classList.add('rotate-x-btn');
     xBtn.classList.add('rotate-btn');
+    xBtn.classList.add('rotate-btn-active');
     xBtn.innerHTML = 'Rotate - X';
     container.appendChild(xBtn);
 
