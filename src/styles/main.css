@@ -107,7 +107,7 @@ footer > div > a > img {
   object-fit: contain;
 }
 
-/* Pop-up Container */
+/* Start pop-up container */
 
 .ship-placement-popup-container {
   position: absolute;
@@ -183,7 +183,7 @@ footer > div > a > img {
  */
 .floating-ship-hover {
   position: absolute;
-  background-color: red;
+  background-color: #028601;
   z-index: 3;
   pointer-events: none;
 }
