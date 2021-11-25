@@ -1,6 +1,7 @@
 import Player from './player';
 import compPlayer from './comp-player';
 import { createWinPopup, createBlackBg, popGBSquares } from './dom-creation';
+import createStartPopup from './start-popup/popup-creation';
 
 const Game = () => {
   const user = Player();
@@ -198,8 +199,12 @@ const Game = () => {
   };
 
   const startGame = () => {
+    const body = document.querySelector('body');
     initUserBoard();
     initCompBoard();
+
+    const startPopup = createStartPopup();
+    body.appendChild(startPopup);
 
     // Listens for user to click so enemy can attack.
     const rows = [...compGB.children];
