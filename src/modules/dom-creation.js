@@ -83,6 +83,18 @@ function spuGridLogic(grid, btnContainer) {
         return false;
       };
 
+      const yAxisValid = (rowNum, shipSize, vertSquareArr) => {
+        if (
+          (rotateYBtn.classList.contains('rotate-btn-active') &&
+            rowNum + shipSize > 10) ||
+          (rotateYBtn.classList.contains('rotate-btn-active') &&
+            vertSquareArr.some(isActive))
+        ) {
+          return true;
+        }
+        return false;
+      };
+
       square.addEventListener('mouseover', () => {
         const shipSize = ships[count].length;
         const hoverShip = document.createElement('div');
@@ -116,12 +128,7 @@ function spuGridLogic(grid, btnContainer) {
 
         if (xAxisValid(squareNum, shipSize, horizSquareArr)) {
           hoverShip.classList.add('square-error');
-        } else if (
-          (rotateYBtn.classList.contains('rotate-btn-active') &&
-            rowNum + shipSize > 10) ||
-          (rotateYBtn.classList.contains('rotate-btn-active') &&
-            vertSquareArr.some(isActive))
-        ) {
+        } else if (yAxisValid(rowNum, shipSize, vertSquareArr)) {
           hoverShip.classList.add('square-error');
         }
 
