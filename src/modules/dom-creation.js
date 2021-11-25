@@ -71,19 +71,20 @@ function spuGridLogic(grid, btnContainer) {
 
       const isActive = (elem) => elem.classList.contains('popup-square-active');
 
-      const xAxisValid = (squareNum, shipSize, horizSquareArr) => {
+      const xAxisInvalid = (squareNum, shipSize, horizSquareArr) => {
         if (
           (rotateXBtn.classList.contains('rotate-btn-active') &&
             squareNum + shipSize > 10) ||
           (rotateXBtn.classList.contains('rotate-btn-active') &&
             horizSquareArr.some(isActive))
         ) {
+          console.log(squareNum + shipSize);
           return true;
         }
         return false;
       };
 
-      const yAxisValid = (rowNum, shipSize, vertSquareArr) => {
+      const yAxisInvalid = (rowNum, shipSize, vertSquareArr) => {
         if (
           (rotateYBtn.classList.contains('rotate-btn-active') &&
             rowNum + shipSize > 10) ||
@@ -126,9 +127,9 @@ function spuGridLogic(grid, btnContainer) {
         // Vertical Squares Check
         const vertSquareArr = createVertSquareArr(square, rowNum, squareNum);
 
-        if (xAxisValid(squareNum, shipSize, horizSquareArr)) {
+        if (xAxisInvalid(squareNum, shipSize, horizSquareArr)) {
           hoverShip.classList.add('square-error');
-        } else if (yAxisValid(rowNum, shipSize, vertSquareArr)) {
+        } else if (yAxisInvalid(rowNum, shipSize, vertSquareArr)) {
           hoverShip.classList.add('square-error');
         }
 
@@ -151,9 +152,9 @@ function spuGridLogic(grid, btnContainer) {
         // Vertical Squares Check
         const vertSquareArr = createVertSquareArr(square, rowNum, squareNum);
 
-        if (xAxisValid(squareNum, shipSize, horizSquareArr)) {
+        if (xAxisInvalid(squareNum, shipSize, horizSquareArr)) {
           console.log("Can't do that!");
-        } else if (yAxisValid(rowNum, shipSize, vertSquareArr)) {
+        } else if (yAxisInvalid(rowNum, shipSize, vertSquareArr)) {
           console.log("Can't do that!");
         } else {
           // Places Ships Horizontally
