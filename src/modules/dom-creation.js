@@ -44,6 +44,31 @@ function spuGridLogic(grid, btnContainer) {
 
   const initEachSquare = (row, rows, rowArr) => {
     row.forEach((square) => {
+      const createHorizSquareArr = (currSquare) => {
+        const horizSquareArr = [];
+        for (let i = 0; i < ships[count].length; ++i) {
+          if (currSquare !== null) {
+            horizSquareArr.push(currSquare);
+            currSquare = currSquare.nextSibling;
+          }
+        }
+        return horizSquareArr;
+      };
+
+      const createVertSquareArr = (currSquare, rowNum, squareNum) => {
+        let vertSquare = currSquare;
+        const vertSquareArr = [];
+        let rowNumTemp = rowNum + 1;
+        for (let i = 0; i < ships[count].length; ++i) {
+          if (rowNumTemp < 10) {
+            vertSquareArr.push(vertSquare);
+            vertSquare = [...rows[rowNumTemp].children][squareNum];
+            rowNumTemp += 1;
+          }
+        }
+        return vertSquareArr;
+      };
+
       square.addEventListener('mouseover', () => {
         const shipSize = ships[count].length;
         const hoverShip = document.createElement('div');
@@ -70,26 +95,10 @@ function spuGridLogic(grid, btnContainer) {
         }
 
         // Horizontal Squares Check
-        let currSquare = square;
-        const horizSquareArr = [];
-        for (let i = 0; i < ships[count].length; ++i) {
-          if (currSquare !== null) {
-            horizSquareArr.push(currSquare);
-            currSquare = currSquare.nextSibling;
-          }
-        }
+        const horizSquareArr = createHorizSquareArr(square);
 
         // Vertical Squares Check
-        currSquare = square;
-        const vertSquareArr = [];
-        let rowNumTemp = rowNum + 1;
-        for (let i = 0; i < ships[count].length; ++i) {
-          if (rowNumTemp < 10) {
-            vertSquareArr.push(currSquare);
-            currSquare = [...rows[rowNumTemp].children][squareNum];
-            rowNumTemp += 1;
-          }
-        }
+        const vertSquareArr = createVertSquareArr(square, rowNum, squareNum);
 
         const isActive = (elem) =>
           elem.classList.contains('popup-square-active');
