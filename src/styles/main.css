@@ -176,6 +176,10 @@ footer > div > a > img {
   background-color: var(--main-color-1-bright);
 }
 
+.square-error {
+  background-color: rgb(255, 133, 133) !important;
+}
+
 /* 
  * The height and width are determined in dom-creation.js within
  * The initEachSquare() function.
