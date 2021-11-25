@@ -164,8 +164,8 @@ function spuGridLogic(grid, btnContainer) {
           if (rotateYBtn.classList.contains('rotate-btn-active')) {
             let currSquare = square;
             for (let i = 0; i < ships[count].length; ++i) {
+              currSquare = rowArr[rowNum + i][squareNum];
               currSquare.classList.add('popup-square-active');
-              currSquare = rowArr[rowNum + (i + 1)][squareNum];
             }
             count += 1;
           }
