@@ -150,16 +150,20 @@ function spuGridLogic(grid, btnContainer) {
 
               currSquare = currSquare.nextSibling;
             }
-            console.log(popupShips);
             count += 1;
           }
 
           // Places Ships Vertically
           if (rotateYBtn.classList.contains('rotate-btn-active')) {
             let currSquare = square;
+            let tempRowNum = rowNum;
             for (let i = 0; i < popupShips[count].length; ++i) {
               currSquare = rowArr[rowNum + i][squareNum];
               currSquare.classList.add('popup-square-active');
+
+              const coord = { x: tempRowNum, y: squareNum };
+              popupShips[count][i] = coord;
+              tempRowNum += 1;
             }
             count += 1;
           }
