@@ -167,6 +167,15 @@ function spuGridLogic(grid, btnContainer) {
             }
             count += 1;
           }
+
+          // Once the ships are populated.
+          if (count === 5) {
+            localStorage.setItem('userCoordsArr', JSON.stringify(popupShips));
+            const popup = document.querySelector(
+              '.ship-placement-popup-container'
+            );
+            popup.remove();
+          }
         }
       });
     });
