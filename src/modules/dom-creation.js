@@ -42,12 +42,16 @@ function spuGridLogic(grid, btnContainer) {
     }
   });
 
-  const initEachSquare = (row, rowArr) => {
+  const initEachSquare = (row, rows, rowArr) => {
     row.forEach((square) => {
       square.addEventListener('mouseover', () => {
         const shipSize = ships[count].length;
         const hoverShip = document.createElement('div');
         hoverShip.classList.add('floating-ship-hover');
+
+        const currRow = square.parentElement;
+        const rowNum = parseInt(currRow.className.replace(/^\D+/g, ''), 10);
+        const squareNum = parseInt(square.className.replace(/^\D+/g, ''), 10);
 
         /* calc() is used to make it so the hover ship doesn't underflow
          * it's required boxes.
@@ -64,6 +68,50 @@ function spuGridLogic(grid, btnContainer) {
           hoverShip.style.height = `calc(${shipSize}00% + ${shipSize * 2}px)`;
           hoverShip.style.width = '100%';
         }
+
+        // Horizontal Squares Check
+        let currSquare = square;
+        const horizSquareArr = [];
+        for (let i = 0; i < ships[count].length; ++i) {
+          if (currSquare !== null) {
+            horizSquareArr.push(currSquare);
+            currSquare = currSquare.nextSibling;
+          }
+        }
+
+        // Vertical Squares Check
+        currSquare = square;
+        const vertSquareArr = [];
+        let rowNumTemp = rowNum + 1;
+        for (let i = 0; i < ships[count].length; ++i) {
+          if (rowNumTemp < 10) {
+            vertSquareArr.push(currSquare);
+            currSquare = [...rows[rowNumTemp].children][squareNum];
+            rowNumTemp += 1;
+          }
+        }
+
+        const isActive = (elem) =>
+          elem.classList.contains('popup-square-active');
+
+        // If the squares in curr square touch a populated square then return false
+
+        if (
+          (rotateXBtn.classList.contains('rotate-btn-active') &&
+            squareNum + shipSize > 10) ||
+          square.classList.contains('popup-square-active') ||
+          horizSquareArr.some(isActive)
+        ) {
+          hoverShip.classList.add('square-error');
+        } else if (
+          (rotateYBtn.classList.contains('rotate-btn-active') &&
+            rowNum + shipSize > 10) ||
+          square.classList.contains('popup-square-active') ||
+          vertSquareArr.some(isActive)
+        ) {
+          hoverShip.classList.add('square-error');
+        }
+
         square.appendChild(hoverShip);
       });
       square.addEventListener('mouseout', () => {
@@ -78,29 +126,45 @@ function spuGridLogic(grid, btnContainer) {
         const squareNum = parseInt(square.className.replace(/^\D+/g, ''), 10);
 
         if (
-          rotateXBtn.classList.contains('rotate-btn-active') &&
-          squareNum + shipSize <= 10 &&
-          !square.classList.contains('popup-square-active')
+          (rotateXBtn.classList.contains('rotate-btn-active') &&
+            squareNum + shipSize > 10) ||
+          square.classList.contains('popup-square-active')
         ) {
-          let currSquare = square;
-          for (let i = 0; i < ships[count].length; ++i) {
-            currSquare.classList.add('popup-square-active');
-            currSquare = currSquare.nextSibling;
+          console.log("Can't do that!");
+        } else if (
+          (rotateYBtn.classList.contains('rotate-btn-active') &&
+            rowNum + shipSize > 10) ||
+          square.classList.contains('popup-square-active')
+        ) {
+          console.log("Can't do that!");
+        } else {
+          // Places Ships Horizontally
+          if (
+            rotateXBtn.classList.contains('rotate-btn-active') &&
+            squareNum + shipSize <= 10 &&
+            !square.classList.contains('popup-square-active')
+          ) {
+            let currSquare = square;
+            for (let i = 0; i < ships[count].length; ++i) {
+              currSquare.classList.add('popup-square-active');
+              currSquare = currSquare.nextSibling;
+            }
+            count += 1;
           }
-          count += 1;
-        }
 
-        if (
-          rotateYBtn.classList.contains('rotate-btn-active') &&
-          rowNum + shipSize <= 10 &&
-          !square.classList.contains('popup-square-active')
-        ) {
-          let currSquare = square;
-          for (let i = 0; i < ships[count].length; ++i) {
-            currSquare.classList.add('popup-square-active');
-            currSquare = rowArr[rowNum + (i + 1)][squareNum];
+          // Places Ships Vertically
+          if (
+            rotateYBtn.classList.contains('rotate-btn-active') &&
+            rowNum + shipSize <= 10 &&
+            !square.classList.contains('popup-square-active')
+          ) {
+            let currSquare = square;
+            for (let i = 0; i < ships[count].length; ++i) {
+              currSquare.classList.add('popup-square-active');
+              currSquare = rowArr[rowNum + (i + 1)][squareNum];
+            }
+            count += 1;
           }
-          count += 1;
         }
       });
     });
@@ -109,7 +173,7 @@ function spuGridLogic(grid, btnContainer) {
   const rows = [...grid.children];
   const rowSquares = [];
   rows.forEach((row) => rowSquares.push([...row.children]));
-  rowSquares.forEach((row) => initEachSquare(row, rowSquares));
+  rowSquares.forEach((row) => initEachSquare(row, rows, rowSquares));
 }
 
 function createStartPopup() {
