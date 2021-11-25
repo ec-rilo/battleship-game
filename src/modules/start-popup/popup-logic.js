@@ -131,9 +131,10 @@ function spuGridLogic(grid, btnContainer) {
         const horizSquareArr = createHorizSquareArr(square);
         const vertSquareArr = createVertSquareArr(square, rowNum, squareNum);
 
-        if (xAxisInvalid(squareNum, shipSize, horizSquareArr)) {
-          console.log("Can't do that!");
-        } else if (yAxisInvalid(rowNum, shipSize, vertSquareArr)) {
+        if (
+          xAxisInvalid(squareNum, shipSize, horizSquareArr) ||
+          yAxisInvalid(rowNum, shipSize, vertSquareArr)
+        ) {
           console.log("Can't do that!");
         } else {
           // Places Ships Horizontally
