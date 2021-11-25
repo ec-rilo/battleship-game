@@ -71,6 +71,18 @@ function spuGridLogic(grid, btnContainer) {
 
       const isActive = (elem) => elem.classList.contains('popup-square-active');
 
+      const xAxisValid = (squareNum, shipSize, horizSquareArr) => {
+        if (
+          (rotateXBtn.classList.contains('rotate-btn-active') &&
+            squareNum + shipSize > 10) ||
+          (rotateXBtn.classList.contains('rotate-btn-active') &&
+            horizSquareArr.some(isActive))
+        ) {
+          return true;
+        }
+        return false;
+      };
+
       square.addEventListener('mouseover', () => {
         const shipSize = ships[count].length;
         const hoverShip = document.createElement('div');
@@ -102,12 +114,7 @@ function spuGridLogic(grid, btnContainer) {
         // Vertical Squares Check
         const vertSquareArr = createVertSquareArr(square, rowNum, squareNum);
 
-        if (
-          (rotateXBtn.classList.contains('rotate-btn-active') &&
-            squareNum + shipSize > 10) ||
-          (rotateXBtn.classList.contains('rotate-btn-active') &&
-            horizSquareArr.some(isActive))
-        ) {
+        if (xAxisValid(squareNum, shipSize, horizSquareArr)) {
           hoverShip.classList.add('square-error');
         } else if (
           (rotateYBtn.classList.contains('rotate-btn-active') &&
