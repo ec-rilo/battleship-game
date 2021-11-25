@@ -31,55 +31,10 @@ const Game = () => {
 
   const initUserShips = () => {
     const userShipsArr = JSON.parse(localStorage.getItem('userCoordsArr'));
-    // for (let i = 0; i < userShipsArr.length; ++i) {
-    //   console.log(userShipsArr);
-    // }
-    const userShip1 = [
-      { x: 0, y: 0 },
-      { x: 0, y: 1 },
-    ];
-
-    const userShip2 = [
-      { x: 0, y: 3 },
-      { x: 0, y: 4 },
-      { x: 0, y: 5 },
-    ];
-
-    const userShip3 = [
-      { x: 0, y: 7 },
-      { x: 0, y: 8 },
-      { x: 0, y: 9 },
-    ];
-
-    const userShip4 = [
-      { x: 3, y: 1 },
-      { x: 3, y: 2 },
-      { x: 3, y: 3 },
-      { x: 3, y: 4 },
-    ];
-
-    const userShip5 = [
-      { x: 7, y: 1 },
-      { x: 7, y: 2 },
-      { x: 7, y: 3 },
-      { x: 7, y: 4 },
-      { x: 7, y: 5 },
-    ];
-
-    user.gameboard.placeShip(userShip1);
-    placeShip(userShip1, userGB);
-
-    user.gameboard.placeShip(userShip2);
-    placeShip(userShip2, userGB);
-
-    user.gameboard.placeShip(userShip3);
-    placeShip(userShip3, userGB);
-
-    user.gameboard.placeShip(userShip4);
-    placeShip(userShip4, userGB);
-
-    user.gameboard.placeShip(userShip5);
-    placeShip(userShip5, userGB);
+    for (let i = 0; i < userShipsArr.length; ++i) {
+      user.gameboard.placeShip(userShipsArr[i]);
+      placeShip(userShipsArr[i], userGB);
+    }
   };
 
   const initCompShips = () => {
