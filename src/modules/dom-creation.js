@@ -148,13 +148,12 @@ function spuGridLogic(grid, btnContainer) {
         // Horizontal Squares Check
         const horizSquareArr = createHorizSquareArr(square);
 
+        // Vertical Squares Check
+        const vertSquareArr = createVertSquareArr(square, rowNum, squareNum);
+
         if (xAxisValid(squareNum, shipSize, horizSquareArr)) {
           console.log("Can't do that!");
-        } else if (
-          (rotateYBtn.classList.contains('rotate-btn-active') &&
-            rowNum + shipSize > 10) ||
-          square.classList.contains('popup-square-active')
-        ) {
+        } else if (yAxisValid(rowNum, shipSize, vertSquareArr)) {
           console.log("Can't do that!");
         } else {
           // Places Ships Horizontally
