@@ -42,8 +42,8 @@ function spuGridLogic(grid, btnContainer) {
     }
   });
 
-  const initEachSquare = (rowArr) => {
-    rowArr.forEach((square) => {
+  const initEachSquare = (row, rowArr) => {
+    row.forEach((square) => {
       square.addEventListener('mouseover', () => {
         const shipSize = ships[count].length;
         const hoverShip = document.createElement('div');
@@ -89,6 +89,19 @@ function spuGridLogic(grid, btnContainer) {
           }
           count += 1;
         }
+
+        if (
+          rotateYBtn.classList.contains('rotate-btn-active') &&
+          rowNum + shipSize <= 10 &&
+          !square.classList.contains('popup-square-active')
+        ) {
+          let currSquare = square;
+          for (let i = 0; i < ships[count].length; ++i) {
+            currSquare.classList.add('popup-square-active');
+            currSquare = rowArr[rowNum + (i + 1)][squareNum];
+          }
+          count += 1;
+        }
       });
     });
   };
@@ -96,7 +109,7 @@ function spuGridLogic(grid, btnContainer) {
   const rows = [...grid.children];
   const rowSquares = [];
   rows.forEach((row) => rowSquares.push([...row.children]));
-  rowSquares.forEach((row) => initEachSquare(row));
+  rowSquares.forEach((row) => initEachSquare(row, rowSquares));
 }
 
 function createStartPopup() {
