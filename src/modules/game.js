@@ -30,6 +30,10 @@ const Game = () => {
   };
 
   const initUserShips = () => {
+    const userShipsArr = JSON.parse(localStorage.getItem('userCoordsArr'));
+    // for (let i = 0; i < userShipsArr.length; ++i) {
+    //   console.log(userShipsArr);
+    // }
     const userShip1 = [
       { x: 0, y: 0 },
       { x: 0, y: 1 },
@@ -198,14 +202,12 @@ const Game = () => {
     }
   };
 
-  const startGame = () => {
-    const body = document.querySelector('body');
+  const populateGB = () => {
     initUserBoard();
     initCompBoard();
+  };
 
-    const startPopup = createStartPopup();
-    body.appendChild(startPopup);
-
+  const startLogic = () => {
     // Listens for user to click so enemy can attack.
     const rows = [...compGB.children];
     for (let i = 0; i < rows.length; ++i) {
@@ -232,6 +234,21 @@ const Game = () => {
         });
       });
     }
+  };
+
+  const startGame = () => {
+    const body = document.querySelector('body');
+    const startPopup = createStartPopup();
+    body.appendChild(startPopup);
+
+    const popupGb = document.querySelector('.popup-gb');
+    popupGb.addEventListener('click', () => {
+      const userShipsArr = JSON.parse(localStorage.getItem('userCoordsArr'));
+      if (userShipsArr != null) {
+        populateGB();
+        startLogic();
+      }
+    });
   };
 
   const resetGame = () => {
