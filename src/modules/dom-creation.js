@@ -78,7 +78,6 @@ function spuGridLogic(grid, btnContainer) {
           (rotateXBtn.classList.contains('rotate-btn-active') &&
             horizSquareArr.some(isActive))
         ) {
-          console.log(squareNum + shipSize);
           return true;
         }
         return false;
