@@ -120,10 +120,7 @@ function spuGridLogic(grid, btnContainer) {
           hoverShip.style.width = '100%';
         }
 
-        // Horizontal Squares Check
         const horizSquareArr = createHorizSquareArr(square);
-
-        // Vertical Squares Check
         const vertSquareArr = createVertSquareArr(square, rowNum, squareNum);
 
         if (xAxisInvalid(squareNum, shipSize, horizSquareArr)) {
@@ -145,10 +142,7 @@ function spuGridLogic(grid, btnContainer) {
         const rowNum = parseInt(currRow.className.replace(/^\D+/g, ''), 10);
         const squareNum = parseInt(square.className.replace(/^\D+/g, ''), 10);
 
-        // Horizontal Squares Check
         const horizSquareArr = createHorizSquareArr(square);
-
-        // Vertical Squares Check
         const vertSquareArr = createVertSquareArr(square, rowNum, squareNum);
 
         if (xAxisInvalid(squareNum, shipSize, horizSquareArr)) {
