@@ -173,8 +173,7 @@ footer > div > a > img {
 }
 
 .popup-square-active {
-  background-color: #028601;
-  cursor: pointer;
+  background-color: var(--main-color-1-bright);
 }
 
 /* 
