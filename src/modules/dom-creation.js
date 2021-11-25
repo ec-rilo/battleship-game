@@ -69,6 +69,8 @@ function spuGridLogic(grid, btnContainer) {
         return vertSquareArr;
       };
 
+      const isActive = (elem) => elem.classList.contains('popup-square-active');
+
       square.addEventListener('mouseover', () => {
         const shipSize = ships[count].length;
         const hoverShip = document.createElement('div');
@@ -99,9 +101,6 @@ function spuGridLogic(grid, btnContainer) {
 
         // Vertical Squares Check
         const vertSquareArr = createVertSquareArr(square, rowNum, squareNum);
-
-        const isActive = (elem) =>
-          elem.classList.contains('popup-square-active');
 
         if (
           (rotateXBtn.classList.contains('rotate-btn-active') &&
