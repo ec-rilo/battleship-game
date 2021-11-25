@@ -145,11 +145,10 @@ function spuGridLogic(grid, btnContainer) {
         const rowNum = parseInt(currRow.className.replace(/^\D+/g, ''), 10);
         const squareNum = parseInt(square.className.replace(/^\D+/g, ''), 10);
 
-        if (
-          (rotateXBtn.classList.contains('rotate-btn-active') &&
-            squareNum + shipSize > 10) ||
-          square.classList.contains('popup-square-active')
-        ) {
+        // Horizontal Squares Check
+        const horizSquareArr = createHorizSquareArr(square);
+
+        if (xAxisValid(squareNum, shipSize, horizSquareArr)) {
           console.log("Can't do that!");
         } else if (
           (rotateYBtn.classList.contains('rotate-btn-active') &&
