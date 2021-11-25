@@ -157,11 +157,7 @@ function spuGridLogic(grid, btnContainer) {
           console.log("Can't do that!");
         } else {
           // Places Ships Horizontally
-          if (
-            rotateXBtn.classList.contains('rotate-btn-active') &&
-            squareNum + shipSize <= 10 &&
-            !square.classList.contains('popup-square-active')
-          ) {
+          if (rotateXBtn.classList.contains('rotate-btn-active')) {
             let currSquare = square;
             for (let i = 0; i < ships[count].length; ++i) {
               currSquare.classList.add('popup-square-active');
@@ -171,11 +167,7 @@ function spuGridLogic(grid, btnContainer) {
           }
 
           // Places Ships Vertically
-          if (
-            rotateYBtn.classList.contains('rotate-btn-active') &&
-            rowNum + shipSize <= 10 &&
-            !square.classList.contains('popup-square-active')
-          ) {
+          if (rotateYBtn.classList.contains('rotate-btn-active')) {
             let currSquare = square;
             for (let i = 0; i < ships[count].length; ++i) {
               currSquare.classList.add('popup-square-active');
