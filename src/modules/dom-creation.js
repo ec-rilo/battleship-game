@@ -94,20 +94,18 @@ function spuGridLogic(grid, btnContainer) {
         const isActive = (elem) =>
           elem.classList.contains('popup-square-active');
 
-        // If the squares in curr square touch a populated square then return false
-
         if (
           (rotateXBtn.classList.contains('rotate-btn-active') &&
             squareNum + shipSize > 10) ||
-          square.classList.contains('popup-square-active') ||
-          horizSquareArr.some(isActive)
+          (rotateXBtn.classList.contains('rotate-btn-active') &&
+            horizSquareArr.some(isActive))
         ) {
           hoverShip.classList.add('square-error');
         } else if (
           (rotateYBtn.classList.contains('rotate-btn-active') &&
             rowNum + shipSize > 10) ||
-          square.classList.contains('popup-square-active') ||
-          vertSquareArr.some(isActive)
+          (rotateYBtn.classList.contains('rotate-btn-active') &&
+            vertSquareArr.some(isActive))
         ) {
           hoverShip.classList.add('square-error');
         }
