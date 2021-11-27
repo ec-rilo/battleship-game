@@ -4,7 +4,7 @@
 
 ## Motivation and Story
 I wanted to practice my Test Driven Development skills and comfortability with jest. Along with
-some higher order function usage practice. This program pushed my limits in terms of planning
+some higher order function usage practice (such as using the array methods .every(), .some(), etc.). This program pushed my limits in terms of planning
 how I would execute my code. I spoke with many developers for insight when I would get stuck
 on an issue but ultimately the logic is developed by me.
 
