@@ -1,16 +1,20 @@
 import Ship from './ship';
 
 const Gameboard = () => {
-  const board = [];
+  let board = [];
 
-  for (let i = 0; i < 11; ++i) {
+  for (let i = 0; i < 10; ++i) {
     board.push([]);
-    for (let j = 0; j < 11; ++j) {
+    for (let j = 0; j < 10; ++j) {
       board[i][j] = { populated: false, hit: false, ship: undefined };
     }
   }
 
   const shipsArr = [];
+
+  function getBoard() {
+    return board;
+  }
 
   const placeShip = (shipCoords) => {
     let available = false;
@@ -51,7 +55,17 @@ const Gameboard = () => {
     return false;
   };
 
-  return { placeShip, receiveAttack, allSunk, board };
+  const resetBoard = () => {
+    board = [];
+    for (let i = 0; i < 10; ++i) {
+      board.push([]);
+      for (let j = 0; j < 10; ++j) {
+        board[i][j] = { populated: false, hit: false, ship: undefined };
+      }
+    }
+  };
+
+  return { placeShip, receiveAttack, allSunk, getBoard, resetBoard };
 };
 
 export default Gameboard;

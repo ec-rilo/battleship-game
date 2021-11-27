@@ -6,8 +6,9 @@ import {
   receiveAttackGB3,
 } from './receive-attack';
 import { gameboard4, gameboard5 } from './ship-sunk-check';
+import resetBoard from './reset-board';
 
-test('returns 11 rows and 11 columns in the 2d array initialized as false', () => {
+test('returns 10 rows and 10 columns in the 2d array initialized as false', () => {
   expect(gameboard1.popBoard()).toEqual(defaultBoardArr);
 });
 
@@ -45,4 +46,8 @@ test('Reports true when all ships are sunk', () => {
 
 test('Reports false when some ships are sunk', () => {
   expect(gameboard5.allSunk()).toBeFalsy();
+});
+
+test('Gameboard can reset to default values', () => {
+  expect(resetBoard.getBoard()).toEqual(defaultBoardArr);
 });

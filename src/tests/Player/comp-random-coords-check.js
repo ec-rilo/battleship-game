@@ -1,7 +1,12 @@
 import Gameboard from '../Gameboard/gameboard';
+import Player from './player';
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
+function initShips1(player) {
+  player.gameboard.placeShip([
+    { x: 0, y: 3 },
+    { x: 0, y: 4 },
+    { x: 0, y: 5 },
+  ]);
 }
 
 const CompPlayer = () => {
@@ -12,8 +17,8 @@ const CompPlayer = () => {
     let isValidCoord = false;
 
     while (isValidCoord === false) {
-      const xCoord = getRandomInt(10);
-      const yCoord = getRandomInt(10);
+      const xCoord = 4; // Placeholder to see if attackCoord will be returned
+      const yCoord = 2; // Placeholder to see if attackCoord will be returned
       attackCoord = { x: xCoord, y: yCoord };
       const enemyGB = enemy.gameboard.getBoard();
       if (enemyGB[xCoord][yCoord].hit === false) {
@@ -34,4 +39,8 @@ const CompPlayer = () => {
   return { attack, damage, gameboard, getAttackCoord };
 };
 
-export default CompPlayer;
+const coordsCheckPlayer = Player();
+initShips1(coordsCheckPlayer);
+const coordsCheckComp = CompPlayer();
+
+export { coordsCheckComp, coordsCheckPlayer };

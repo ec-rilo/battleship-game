@@ -3,6 +3,10 @@ import Gameboard from '../Gameboard/gameboard';
 function attackAllShips(user, enemy) {
   user.attack(enemy, {
     x: 7,
+    y: 6,
+  });
+  user.attack(enemy, {
+    x: 7,
     y: 7,
   });
   user.attack(enemy, {
@@ -12,10 +16,6 @@ function attackAllShips(user, enemy) {
   user.attack(enemy, {
     x: 7,
     y: 9,
-  });
-  user.attack(enemy, {
-    x: 7,
-    y: 10,
   });
 }
 
@@ -29,10 +29,10 @@ function initShips1(player) {
 
 function initShips2(player) {
   player.gameboard.placeShip([
+    { x: 7, y: 6 },
     { x: 7, y: 7 },
     { x: 7, y: 8 },
     { x: 7, y: 9 },
-    { x: 7, y: 10 },
   ]);
 }
 

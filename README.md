@@ -2,11 +2,20 @@
 <h1 align="center">Battleship</h1>
 <h4 align="center">The classic Battleship game with a modern twist.</h4>
 
-## Motivation
+## Motivation and Story
 I wanted to practice my Test Driven Development skills and comfortability with jest. Along with
 some higher order function usage practice. This program pushed my limits in terms of planning
 how I would execute my code. I spoke with many developers for insight when I would get stuck
 on an issue but ultimately the logic is developed by me.
+
+This program relies heavily on dom manipulation. Adding, removing, and updating elements from the 
+webpage throughout the game. This game refined the way I structure my dom creation. Also I improved the way 
+I tackled a project. Going step by step piecing together the project to get an end result.
+
+Here's a image of a excel sheet I used to envision how the gameboard would ulimately look as I pieced
+it together using a 2-Dimensional Array.
+
+[redacted]
 
 ## Code Styles
 This project follows the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).

@@ -1,15 +1,15 @@
 import { popGBSquares } from './dom-creation';
+import game from './game';
 
-const popMainPage = () => {
-  const GB1 = document.querySelector('.gameboard-1');
-  popGBSquares(GB1);
-
-  const GB2 = document.querySelector('.gameboard-2');
-  popGBSquares(GB2);
+const popGBS = () => {
+  const GB = [...document.querySelectorAll('.gameboard-interface')];
+  GB.forEach((gameboard) => popGBSquares(gameboard));
 };
 
 function initProgram() {
-  popMainPage();
+  localStorage.setItem('userCoordsArr', JSON.stringify([]));
+  popGBS();
+  game.startGame();
 }
 
 export default initProgram;
