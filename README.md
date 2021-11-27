@@ -2,7 +2,7 @@
 <h1 align="center">Battleship</h1>
 
 ![Alt text](./src/images/show-off-imgs/battleship.png)
-<h4 align="center">The classic Battleship game with a modern twist.</h4>
+<h4 align="center">The classic Battleship game with a modern touch.</h4>
 <p align="center"> <a href="https://ec-battleship.netlify.app/">View Live >></a></p>
 
 ## Motivation and Story
