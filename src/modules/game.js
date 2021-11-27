@@ -3,6 +3,10 @@ import compPlayer from './comp-player';
 import { createWinPopup, createBlackBg, popGBSquares } from './dom-creation';
 import createStartPopup from './start-popup/popup-creation';
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 const Game = () => {
   const user = Player();
   const comp = compPlayer();
@@ -38,52 +42,115 @@ const Game = () => {
   };
 
   const initCompShips = () => {
-    const compShip1 = [
-      { x: 5, y: 1 },
-      { x: 5, y: 2 },
+    const compShips = [
+      [{}, {}, {}, {}, {}],
+      [{}, {}, {}, {}],
+      [{}, {}, {}],
+      [{}, {}, {}],
+      [{}, {}],
     ];
 
-    const compShip2 = [
-      { x: 2, y: 6 },
-      { x: 2, y: 7 },
-      { x: 2, y: 8 },
-    ];
+    const isActive = (elem) => elem.classList.contains('square-populated');
 
-    const compShip3 = [
-      { x: 4, y: 6 },
-      { x: 4, y: 7 },
-      { x: 4, y: 8 },
-    ];
+    const createHorizSquareArr = (currSquare, shipSize) => {
+      let horizSquare = currSquare;
+      const horizSquareArr = [];
+      for (let i = 0; i < shipSize; ++i) {
+        if (horizSquare !== null) {
+          horizSquareArr.push(horizSquare);
+          horizSquare = horizSquare.nextSibling;
+        }
+      }
+      return horizSquareArr;
+    };
 
-    const compShip4 = [
-      { x: 7, y: 6 },
-      { x: 7, y: 7 },
-      { x: 7, y: 8 },
-      { x: 7, y: 9 },
-    ];
+    const createHorizCoords = (coord, shipSize) => {
+      const xCoord = coord.x;
+      let yCoord = coord.y;
+      const horizSquareArr = [];
 
-    const compShip5 = [
-      { x: 9, y: 5 },
-      { x: 9, y: 6 },
-      { x: 9, y: 7 },
-      { x: 9, y: 8 },
-      { x: 9, y: 9 },
-    ];
+      for (let i = 0; i < shipSize; ++i) {
+        const newCoord = { x: xCoord, y: yCoord };
+        horizSquareArr.push(newCoord);
+        yCoord += 1;
+      }
+      return horizSquareArr;
+    };
 
-    comp.gameboard.placeShip(compShip1);
-    placeShip(compShip1, compGB);
+    const createVertSquareArr = (currSquare, rowNum, squareNum, shipSize) => {
+      let vertSquare = currSquare;
+      const vertSquareArr = [];
+      let rowNumTemp = rowNum;
+      for (let i = 0; i < shipSize; ++i) {
+        const row = [...compGB.children][rowNumTemp].children;
+        vertSquare = row[squareNum];
+        vertSquareArr.push(vertSquare);
+        rowNumTemp += 1;
+      }
+      return vertSquareArr;
+    };
 
-    comp.gameboard.placeShip(compShip2);
-    placeShip(compShip2, compGB);
+    const createVertCoords = (coord, shipSize) => {
+      let coordX = coord.x;
+      const coordY = coord.y;
+      const vertCoordArr = [];
+      for (let i = 0; i < shipSize; ++i) {
+        const vertSquare = { x: coordX, y: coordY };
+        vertCoordArr.push(vertSquare);
+        coordX += 1;
+      }
+      return vertCoordArr;
+    };
 
-    comp.gameboard.placeShip(compShip3);
-    placeShip(compShip3, compGB);
+    // create a coordArr of used coordinates
+    let shipIndex = 0;
+    while (compShips[shipIndex] !== undefined) {
+      const gb = comp.gameboard.getBoard();
+      const rowNum = getRandomInt(10);
+      const squareNum = getRandomInt(10);
+      const coord = { x: rowNum, y: squareNum };
+      const square = [...compGB.children][rowNum].children[squareNum];
 
-    comp.gameboard.placeShip(compShip4);
-    placeShip(compShip4, compGB);
+      // Checks rows and columns if they are valid for populating with ships.
+      if (!gb[rowNum][squareNum].populated) {
+        if (rowNum >= 0 && squareNum <= 10 - compShips[shipIndex].length) {
+          const horizSquareArr = createHorizSquareArr(
+            square,
+            compShips[shipIndex].length
+          );
 
-    comp.gameboard.placeShip(compShip5);
-    placeShip(compShip5, compGB);
+          if (!horizSquareArr.some(isActive)) {
+            const horizCoords = createHorizCoords(
+              coord,
+              compShips[shipIndex].length
+            );
+            comp.gameboard.placeShip(horizCoords);
+            placeShip(horizCoords, compGB);
+            shipIndex += 1;
+          }
+        } else if (
+          squareNum >= 0 &&
+          rowNum <= 10 - compShips[shipIndex].length
+        ) {
+          const vertSquareArr = createVertSquareArr(
+            square,
+            rowNum,
+            squareNum,
+            compShips[shipIndex].length
+          );
+
+          if (!vertSquareArr.some(isActive)) {
+            const vertCoords = createVertCoords(
+              coord,
+              compShips[shipIndex].length
+            );
+            comp.gameboard.placeShip(vertCoords);
+            placeShip(vertCoords, compGB);
+            shipIndex += 1;
+          }
+        }
+      }
+    }
   };
 
   const initHits = (gb) => {
@@ -194,14 +261,19 @@ const Game = () => {
   const startGame = () => {
     const body = document.querySelector('body');
     const startPopup = createStartPopup();
+    const background = createBlackBg();
+    body.appendChild(background);
     body.appendChild(startPopup);
 
     const popupGb = document.querySelector('.popup-gb');
     popupGb.addEventListener('click', () => {
       const userShipsArr = JSON.parse(localStorage.getItem('userCoordsArr'));
       if (userShipsArr != null) {
-        populateGB();
-        startLogic();
+        if (userShipsArr.length !== 0) {
+          background.remove();
+          populateGB();
+          startLogic();
+        }
       }
     });
   };
