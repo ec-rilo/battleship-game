@@ -26,6 +26,19 @@ const Game = () => {
     }
   };
 
+  const compPlaceShip = (coords, gb) => {
+    const rows = [...gb.children];
+    for (let i = 0; i < coords.length; ++i) {
+      const coord = coords[i];
+
+      const row = rows[coord.x];
+
+      const rowSquares = [...row.children];
+      const square = rowSquares[coord.y];
+      square.classList.add('comp-square-populated');
+    }
+  };
+
   const resetBoard = (gb) => {
     const rows = [...gb.children];
     rows.forEach((row) => {
@@ -50,7 +63,7 @@ const Game = () => {
       [{}, {}],
     ];
 
-    const isActive = (elem) => elem.classList.contains('square-populated');
+    const isActive = (elem) => elem.classList.contains('comp-square-populated');
 
     const createHorizSquareArr = (currSquare, shipSize) => {
       let horizSquare = currSquare;
@@ -125,7 +138,7 @@ const Game = () => {
               compShips[shipIndex].length
             );
             comp.gameboard.placeShip(horizCoords);
-            placeShip(horizCoords, compGB);
+            compPlaceShip(horizCoords, compGB);
             shipIndex += 1;
           }
         } else if (
@@ -145,7 +158,7 @@ const Game = () => {
               compShips[shipIndex].length
             );
             comp.gameboard.placeShip(vertCoords);
-            placeShip(vertCoords, compGB);
+            compPlaceShip(vertCoords, compGB);
             shipIndex += 1;
           }
         }
@@ -166,7 +179,7 @@ const Game = () => {
           const rowNum = parseInt(name.replace(/\D/g, ''), 10);
           user.attack(comp, { x: i, y: rowNum });
           square.classList.add('square-hit');
-          if (square.classList.contains('square-populated')) {
+          if (square.classList.contains('comp-square-populated')) {
             square.classList.add('direct-square-hit');
           }
           if (comp.gameboard.allSunk()) {
