@@ -1,6 +1,9 @@
 
 <h1 align="center">Battleship</h1>
+
+![Alt text](./src/images/show-off-imgs/battleship.png)
 <h4 align="center">The classic Battleship game with a modern twist.</h4>
+<p align="center"> <a href="https://ec-battleship.netlify.app/">View Live >></a></p>
 
 ## Motivation and Story
 I wanted to practice my Test Driven Development skills and comfortability with jest. Along with
@@ -15,7 +18,7 @@ I tackled a project. Going step by step piecing together the project to get an e
 Here's a image of a excel sheet I used to envision how the gameboard would ulimately look as I pieced
 it together using a 2-Dimensional Array.
 
-[redacted]
+![Alt text](./src/images/show-off-imgs/excel-sheet-battleship.png)
 
 ## Code Styles
 This project follows the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript).
