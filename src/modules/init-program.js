@@ -1,5 +1,5 @@
 import { popGBSquares } from './dom-creation';
-import popup from './popup-card-logic';
+import game from './game';
 
 const popGBS = () => {
   const GB = [...document.querySelectorAll('.gameboard-interface')];
@@ -7,8 +7,9 @@ const popGBS = () => {
 };
 
 function initProgram() {
+  localStorage.setItem('userCoordsArr', JSON.stringify([]));
   popGBS();
-  popup.startLogic();
+  game.startGame();
 }
 
 export default initProgram;
