@@ -230,6 +230,9 @@ const Game = () => {
   };
 
   const startLogic = () => {
+    console.log(user.gameboard.getBoard());
+    console.log(comp.gameboard.getBoard());
+
     // Listens for user to click so enemy can attack.
     const rows = [...compGB.children];
     for (let i = 0; i < rows.length; ++i) {
@@ -279,6 +282,7 @@ const Game = () => {
   };
 
   const resetGame = () => {
+    localStorage.setItem('userCoordsArr', JSON.stringify([]));
     user.gameboard.resetBoard();
     comp.gameboard.resetBoard();
 
